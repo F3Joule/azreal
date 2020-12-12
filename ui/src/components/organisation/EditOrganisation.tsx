@@ -16,7 +16,7 @@ import {
 import { useRouter } from 'next/router'
 import { Page } from '../utils/Page'
 import { OrganisationProps, OrganisationSchema, organisationSchema, withLoadOrganisationFromUrl } from './utils'
-import { DocumentLoader } from '../files/FileLoader'
+import { DocumentLoader, PhotoLoader } from '../files/FileLoader'
 import { createHasuraArray, fillInitValues, getErrorMsg } from '../utils'
 import { EditButton } from '../utils/EditButton'
 import { AddOrganization } from 'src/graphql/query/organisations/types/AddOrganization'
@@ -82,18 +82,18 @@ export const InnerEditOrganisation = ({ organisation }: OrganisationForm) => {
   return (
     <Page title={messages[formType].title}>
       <EuiForm component="form" onSubmit={handleSubmit(onSubmit)}>
-        <EuiFormRow label="Повна назва організації"fullWidth>
-          <EuiFieldText name="fullName" inputRef={register} fullWidth />
+        <EuiFormRow label="* Повна назва організації"fullWidth>
+          <EuiFieldText name="fullName" inputRef={register} required fullWidth />
         </EuiFormRow>
         <EuiFormErrorText>{getErrorMsg(errors.fullName)}</EuiFormErrorText>
 
-        <EuiFormRow label="Коротка назва" fullWidth>
-          <EuiFieldText name="shortName" inputRef={register} fullWidth />
+        <EuiFormRow label="* Коротка назва" fullWidth>
+          <EuiFieldText name="shortName" inputRef={register} required fullWidth />
         </EuiFormRow>
         <EuiFormErrorText>{getErrorMsg(errors.shortName)}</EuiFormErrorText>
 
-        <EuiFormRow label="Країна" fullWidth>
-          <EuiFieldText name="country" inputRef={register} fullWidth />
+        <EuiFormRow label="* Країна" fullWidth>
+          <EuiFieldText name="country" inputRef={register} required fullWidth />
         </EuiFormRow>
         <EuiFormErrorText>{getErrorMsg(errors.country)}</EuiFormErrorText>
 
@@ -102,7 +102,7 @@ export const InnerEditOrganisation = ({ organisation }: OrganisationForm) => {
         </EuiFormRow>
         <EuiFormErrorText>{getErrorMsg(errors.organisationRole)}</EuiFormErrorText>
 
-        <EuiFormRow label="Єдиний номер платника податку" fullWidth>
+        <EuiFormRow label="* Єдиний номер платника податку" fullWidth>
           <EuiFieldNumber
             name='rntrc'
             placeholder="00000000"
@@ -118,7 +118,7 @@ export const InnerEditOrganisation = ({ organisation }: OrganisationForm) => {
             name="documentIds"
             control={control}
             render={props =>
-              <DocumentLoader fileIds={props.value} onChange={props.onChange} />
+              <PhotoLoader fileIds={props.value} onChange={props.onChange} />
             } // props contains: onChange, onBlur and value
           />
         </EuiFormRow>}

@@ -1,18 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import { EuiBreadcrumb, EuiHeaderBreadcrumbs } from '@elastic/eui'
-
-const textBySegmentName = {
-  'Profile': 'Мій аккаунт',
-  'Users': 'Користувачі',
-  'Edit': 'Редагування',
-  'New': 'Створення',
-  'Organisations': 'Організації',
-  'Service': 'Сервісний журнал',
-  'Measurements': 'Вимірювання',
-  'Factors': 'Фактори забруднення',
-  'Sensors': 'Датчики'
-}
+import uiMsg from 'src/i18/ua_msg'
 
 function segmentToName (segment: string): string {
   if (!segment) {
@@ -22,7 +11,7 @@ function segmentToName (segment: string): string {
   const withSpaces = segment.replace(/-/g, ' ')
 
   const name = withSpaces[0].toUpperCase() + withSpaces.slice(1)
-  return textBySegmentName[name] || name
+  return uiMsg.breadcrumbs[name] || name
 }
 
 /**

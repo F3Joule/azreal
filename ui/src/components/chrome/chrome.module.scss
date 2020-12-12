@@ -18,7 +18,10 @@
   justify-content: center;
   padding-left: .5rem;
   padding-right: .5rem;
-  width: 11rem;
+}
+
+.chrWrapMob {
+  padding-top: $euiSizeXXL + $euiSizeS;
 }
 
 .chrWrap {

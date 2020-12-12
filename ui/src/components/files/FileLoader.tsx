@@ -2,13 +2,14 @@ import { EuiFilePicker, EuiFilePickerProps, EuiFormErrorText } from '@elastic/eu
 import React, { useState } from 'react'
 import axios from 'axios'
 import { createHasuraArray, mongoUrl } from '../utils'
+import uiMsg from 'src/i18/ua_msg'
 
 type FilePicker = Omit<EuiFilePickerProps, 'onChange'> & {
   onChange: (fileIds?: string) => void
   fileIds?: string[]
 }
 
-const InnerFileLoader = ({ onChange, fileIds: initialFileIds, ...props}: FilePicker) => {
+const InnerFileLoader = ({ onChange, fileIds: initialFileIds, accept, ...props}: FilePicker) => {
   const [ loading, setLoading ] = useState(false)
   const [ fileIds, setFileIds ] = useState(initialFileIds || [])
   const [ error, setError ] = useState<string>()
@@ -29,7 +30,10 @@ const InnerFileLoader = ({ onChange, fileIds: initialFileIds, ...props}: FilePic
           const promisesFileHash = []
   
           for (const file of files) {
-            promisesFileHash.push((saveFile(file)))
+            console.log(file.type, accept)
+            if (file.type.includes(accept)) {
+              promisesFileHash.push((saveFile(file)))
+            }
           }
   
           const ids = await Promise.all(promisesFileHash)
@@ -69,13 +73,13 @@ const deleteFile = async (fileId: string) => {
 export const deleteFiles = (ids?: string[]) => ids && ids.forEach(id => deleteFile(id))
 
 export const DocumentLoader = ({ name, ...props }: FilePicker) => <InnerFileLoader
-  accept='.pdf'
-  initialPromptText="Виберіть або перетягніть файл"
+  accept='image'
+  initialPromptText={uiMsg.loader.file}
   {...props}
 />
 
 export const PhotoLoader = (props: FilePicker) => <InnerFileLoader
   name={name}
-  accept='image/*'
-  initialPromptText="Виберіть або перетягніть фото"
+  accept='image'
+  initialPromptText={uiMsg.loader.photo}
   {...props} />

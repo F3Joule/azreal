@@ -77,6 +77,7 @@ export const ServiceLogSelector = ({ onChange, sensorId: initialSensorId }: Serv
                   showTimeSelect
                   selected={value ? moment(value) : undefined}
                   onChange={onChange}
+                  placeholder='Початкова дата'
                   fullWidth
                 />
               } // props contains: onChange, onBlur and value
@@ -89,6 +90,7 @@ export const ServiceLogSelector = ({ onChange, sensorId: initialSensorId }: Serv
                   showTimeSelect
                   selected={value ? moment(value) : undefined}
                   onChange={onChange}
+                  placeholder='Кінцева дата'
                   fullWidth
                 />
               } // props contains: onChange, onBlur and value

@@ -77,6 +77,7 @@ export enum az_sensors_PollutionFactors_update_column {
   label = "label",
   maxValue = "maxValue",
   name = "name",
+  ukrainianLabel = "ukrainianLabel",
   unit = "unit",
 }
 
@@ -100,6 +101,7 @@ export enum az_sensors_Sensors_update_column {
   manufacturer = "manufacturer",
   model = "model",
   sensorId = "sensorId",
+  sideNumber = "sideNumber",
 }
 
 export enum az_sensors_e_measurement_unit_constraint {
@@ -422,6 +424,7 @@ export interface az_sensors_PollutionFactors_bool_exp {
   label?: String_comparison_exp | null;
   maxValue?: float8_comparison_exp | null;
   name?: String_comparison_exp | null;
+  ukrainianLabel?: String_comparison_exp | null;
   unit?: az_sensors_e_measurement_unit_enum_comparison_exp | null;
 }
 
@@ -432,6 +435,7 @@ export interface az_sensors_PollutionFactors_insert_input {
   label?: string | null;
   maxValue?: any | null;
   name?: string | null;
+  ukrainianLabel?: string | null;
   unit?: az_sensors_e_measurement_unit_enum | null;
 }
 
@@ -492,6 +496,7 @@ export interface az_sensors_Sensors_bool_exp {
   manufacturer?: String_comparison_exp | null;
   model?: String_comparison_exp | null;
   sensorId?: Int_comparison_exp | null;
+  sideNumber?: Int_comparison_exp | null;
 }
 
 export interface az_sensors_Sensors_insert_input {
@@ -504,6 +509,7 @@ export interface az_sensors_Sensors_insert_input {
   manufacturer?: string | null;
   model?: string | null;
   sensorId?: number | null;
+  sideNumber?: number | null;
 }
 
 export interface az_sensors_Sensors_obj_rel_insert_input {

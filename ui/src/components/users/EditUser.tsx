@@ -114,7 +114,7 @@ export const InnerEditUser = ({ user }: UserForm) => {
   , [ loading ])
 
   const PasswordInput = useCallback(() => isNew ? <>
-    <EuiFormRow label="Пароль користувача" fullWidth>
+    <EuiFormRow label="* Пароль користувача" fullWidth>
       <EuiFieldPassword name={getFiledName('password')} required type='dual' inputRef={register} fullWidth />
     </EuiFormRow>
     <EuiFormErrorText>{getErrorMsg(errors[getFiledName('password')])}</EuiFormErrorText>
@@ -125,12 +125,12 @@ export const InnerEditUser = ({ user }: UserForm) => {
   return (
     <Page title={messages[formType].title}>
       <EuiForm component="form" onSubmit={handleSubmit(onSubmit)}>
-        <EuiFormRow label="Прізвище ім'я по-батькові"fullWidth>
+        <EuiFormRow label="* Прізвище ім'я по-батькові"fullWidth>
           <EuiFieldText name={getFiledName('fullName')} inputRef={register} required fullWidth />
         </EuiFormRow>
         <EuiFormErrorText>{getErrorMsg(errors[getFiledName('fullName')])}</EuiFormErrorText>
 
-        <EuiFormRow label="Email" fullWidth>
+        <EuiFormRow label="* Email" fullWidth>
           <EuiFieldText name={getFiledName('email')} inputRef={register} required fullWidth />
         </EuiFormRow>
         <EuiFormErrorText>{getErrorMsg(errors[getFiledName('email')])}</EuiFormErrorText>
@@ -138,20 +138,20 @@ export const InnerEditUser = ({ user }: UserForm) => {
         <EuiFormRow label="Номер телефону" fullWidth>
           <EuiFieldText
             name={getFiledName('phoneNumber')}
-            placeholder="+380(000)0000000"
+            placeholder="+380(00)0000000"
             inputRef={register}
             fullWidth
           />
         </EuiFormRow>
         <EuiFormErrorText>{getErrorMsg(errors[getFiledName('phoneNumber')])}</EuiFormErrorText>
 
-        <EuiFormRow label="Рівень доступу користувача" fullWidth>
+        <EuiFormRow label="* Рівень доступу користувача" fullWidth>
           <UserRoleSelect disabled={!isManager} name={getFiledName('userRole')} required inputRef={register} fullWidth />
         </EuiFormRow>
         <EuiFormErrorText>{getErrorMsg(errors[getFiledName('userRole')])}</EuiFormErrorText>
 
-        <EuiFormRow label="Організація" fullWidth>
-          <OrganisationSelect disabled={!isManager} name={getFiledName('organisationId')} inputRef={register} fullWidth />
+        <EuiFormRow label="* Організація" fullWidth>
+          <OrganisationSelect disabled={!isManager} required name={getFiledName('organisationId')} inputRef={register} fullWidth />
         </EuiFormRow>
         <EuiFormErrorText>{getErrorMsg(errors[getFiledName('organisationId')])}</EuiFormErrorText>
 

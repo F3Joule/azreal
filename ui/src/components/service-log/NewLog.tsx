@@ -88,7 +88,7 @@ export const NewLog = ({ sensorId: initialSensorId, serviceKind, onChange }: New
   return (
     <EuiForm component="form" onSubmit={handleSubmit(onSubmit)}>
 
-      {!initialSensorId && <EuiFormRow label='ID сенсора' fullWidth>
+      {!initialSensorId && <EuiFormRow label='* ID сенсора' fullWidth>
         <SensorsSelect
           name='sensorId'
           inputRef={register}
@@ -99,7 +99,7 @@ export const NewLog = ({ sensorId: initialSensorId, serviceKind, onChange }: New
         />
       </EuiFormRow>}
       
-      <EuiFormRow label="Тип сервісу" fullWidth>
+      <EuiFormRow label="* Тип сервісу" fullWidth>
         <EuiSelect
           name='serviceKind'
           placeholder="Оберіть тип сервісу"
@@ -110,7 +110,7 @@ export const NewLog = ({ sensorId: initialSensorId, serviceKind, onChange }: New
         />
       </EuiFormRow>
 
-      <EuiFormRow label="Час закінчення робіт" fullWidth>
+      <EuiFormRow label="* Час закінчення робіт" fullWidth>
         <Controller
           name="timestamp"
           control={control}
@@ -120,22 +120,22 @@ export const NewLog = ({ sensorId: initialSensorId, serviceKind, onChange }: New
         />
       </EuiFormRow>
 
-      <EuiFormRow label="Файли" fullWidth>
+      <EuiFormRow label="Документи про проведені роботи" fullWidth>
         <Controller
           name="documentIds"
           control={control}
           render={props =>
-            <DocumentLoader onChange={props.onChange} />
+            <DocumentLoader onChange={props.onChange} required />
           } // props contains: onChange, onBlur and value
         />
       </EuiFormRow>
 
-      <EuiFormRow label="Серія фото" fullWidth>
+      <EuiFormRow label="Серія фото датчика" fullWidth>
         <Controller
           name="photoIds"
           control={control}
           render={props =>
-            <PhotoLoader onChange={props.onChange} />
+            <PhotoLoader onChange={props.onChange} required />
           } // props contains: onChange, onBlur and value
         />
       </EuiFormRow>

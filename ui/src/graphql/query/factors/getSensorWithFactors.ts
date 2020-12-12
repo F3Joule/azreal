@@ -9,6 +9,7 @@ export const GET_SENSORS_WITH_FACTORS = gql`
       SensorFactors {
         PollutionFactor {
           label
+          ukrainianLabel
           e_measurement_unit {
             description
           }

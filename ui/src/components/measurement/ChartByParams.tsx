@@ -3,6 +3,7 @@
 import { EuiButton, EuiFlexGroup, EuiFlexItem, EuiSpacer, EuiSwitch } from '@elastic/eui'
 import React, { useState } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
+import uiMsg from 'src/i18/ua_msg'
 import { MeasurementsData } from './types'
 
 type ChartParams = {
@@ -48,7 +49,7 @@ export const ChartByParam = (props: MeasurementsData) => {
   return <>
     <EuiSpacer size='xxl' />
     <EuiSwitch
-      label={`${isLog ? 'Логарифмічний' : 'Лінійний'} графік`}
+      label={isLog ? uiMsg.measurements.chart.type.log : uiMsg.measurements.chart.type.linear}
       checked={isLog}
       onChange={(e) => setIsLog(e.target.checked)}
     />

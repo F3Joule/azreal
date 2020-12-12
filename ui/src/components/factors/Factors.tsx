@@ -1,6 +1,7 @@
 import { EuiDataGridColumn } from '@elastic/eui'
 import React from 'react'
 import { useGetFactors } from 'src/graphql/query/factors/getFactorsWithSensors'
+import uiMsg from 'src/i18/ua_msg'
 import { DataGrid } from '../utils/DataGrid'
 import { Loading } from '../utils/loading'
 import { Page } from '../utils/Page'
@@ -16,29 +17,24 @@ const Factors = () => {
 
   const columns: EuiDataGridColumn[] = [ {
     id: 'label',
-    display: 'Назва фактору',
-    displayAsText: 'Назва фактору'
+    display: uiMsg.factors.columns.label,
+    displayAsText: uiMsg.factors.columns.label
   },
   {
     id: 'unit',
-    display: 'Одиниці',
-    displayAsText: 'Одиниці'
-  },
-  {
-    id: 'maxValue',
-    display: 'ГДК',
-    displayAsText: 'ГДК'
+    display: uiMsg.factors.columns.unit,
+    displayAsText: uiMsg.factors.columns.unit
   },
   {
     id: 'amount',
-    display: 'Кількість датчиків',
-    displayAsText: 'Кількість датчиків'
+    display: uiMsg.factors.columns.amount,
+    displayAsText: uiMsg.factors.columns.amount
   }
   ]
 
   const sensorsData: Column[] = data?.az_sensors_PollutionFactors_aggregate.nodes
-    .map(({ label, e_measurement_unit: { description }, maxValue, SensorFactors }) => ({
-      label,
+    .map(({ ukrainianLabel, label, e_measurement_unit: { description }, maxValue, SensorFactors }) => ({
+      label: ukrainianLabel || label,
       unit: description,
       maxValue,
       amount: SensorFactors.length

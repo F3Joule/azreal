@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent, useMemo, useRef } from 'react'
 import { useRouter } from 'next/router'
 
 import {
@@ -13,6 +13,7 @@ import {
   EuiNavDrawerGroup,
   EuiShowFor,
 } from '@elastic/eui'
+import { isMobile } from 'mobile-device-detect'
 
 import { buildExploreLinks } from '../navigation_links/explore_links'
 
@@ -24,7 +25,7 @@ import { useAuth, useIsManagerAccess } from '../auth/AuthContext'
 
 const Logo: FunctionComponent<{ onClick: () => void }> = ({ onClick }) => (
   <EuiHeaderLogo
-    iconType='/images/airzoom.svg'
+    iconType='/images/compress-airzoom.png'
     onClick={onClick}
     aria-label='Goes to home'
   />
@@ -70,14 +71,11 @@ const Chrome: FunctionComponent = ({ children }) => {
             <Logo onClick={() => router.push('/')} />
           </EuiHeaderSectionItem>
 
-          <EuiHeaderSectionItem border='right'>
-            {/* <HeaderSpacesMenu /> */}
-          </EuiHeaderSectionItem>
         </EuiHeaderSection>
 
         <Breadcrumbs />
 
-        <EuiHeaderSection side='right'>
+        <EuiHeaderSection side={isMobile ? 'left' : 'right'}>
           <EuiHeaderSectionItem className={styles.chrHeaderSectionItem}>
             <SwitchTheme />
           </EuiHeaderSectionItem>
@@ -89,7 +87,7 @@ const Chrome: FunctionComponent = ({ children }) => {
       <EuiNavDrawer isLocked={false} ref={navDrawerRef}>
         <EuiNavDrawerGroup listItems={buildExploreLinks(buildOnClick, isManagerAccess)} />
       </EuiNavDrawer>
-      <div className={styles.chrWrap}>{children}</div>
+      <div className={isMobile ? styles.chrWrapMob : styles.chrWrap}>{children}</div>
     </>
   )
 }
