@@ -70,7 +70,7 @@ export const NewSensor = () => {
   return (
     <Page title='Редагувати датчик'>
       <EuiForm component="form" onSubmit={handleSubmit(onSubmit)}>
-        <EuiFormRow label="*ID сенсора" fullWidth>
+        <EuiFormRow label="* ID сенсора" fullWidth>
           <EuiFieldNumber
             name='sensorId'
             placeholder="ID сенсора з Airly"
@@ -91,7 +91,7 @@ export const NewSensor = () => {
         </EuiFormRow>
         <EuiFormErrorText>{getErrorMsg(errors.model)}</EuiFormErrorText>
 
-        <EuiFormRow label="*Час закінчення робіт" fullWidth>
+        <EuiFormRow label="* Час закінчення робіт" fullWidth>
           <Controller
             name="timestamp"
             control={control}
@@ -101,7 +101,7 @@ export const NewSensor = () => {
           />
         </EuiFormRow>
 
-        <EuiFormRow label="*Документи про встановлення" fullWidth>
+        <EuiFormRow label="* Документи про встановлення" fullWidth>
           <Controller
             name="documentIds"
             control={control}
@@ -111,7 +111,7 @@ export const NewSensor = () => {
           />
         </EuiFormRow>
 
-        <EuiFormRow label="*Серія фото встановленого датчика" fullWidth>
+        <EuiFormRow label="* Серія фото встановленого датчика" fullWidth>
           <Controller
             name="photoIds"
             control={control}

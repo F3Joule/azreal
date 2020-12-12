@@ -1,6 +1,7 @@
 import { EuiDescriptionList, EuiFlexGrid, EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer } from '@elastic/eui'
 import React, { useState } from 'react'
 import { GetServiceLogs_az_sensors_ServiceLog } from 'src/graphql/query/service-log/types/GetServiceLogs'
+import uiMsg from 'src/i18/ua_msg'
 import { Files } from '../files/Files'
 import { Images } from '../files/Images'
 import { getAggregationTime } from '../measurement/utils'
@@ -68,9 +69,9 @@ type ServiceLogsSectionProps = {
 export const ServiceLogsSection = ({ sensorId }: Partial<ServiceLogsSectionProps>) => {
   const [ data, setData ] = useState<GetServiceLogs_az_sensors_ServiceLog[]>([])
   return <>
-    <EuiSpacer size='xl' />
+    <EuiSpacer size='l' />
     <ServiceLogSelector onChange={(data) => setData(data)} sensorId={sensorId} />
-    <EuiSpacer size='xl' />
+    <EuiSpacer size='l' />
     <ServiceLogs data={data} />
   </>
 }
@@ -79,14 +80,17 @@ export const ServiceLogsSectionForSensor = (props: ServiceLogsSectionProps) =>
   <ServiceLogsSection {...props} />
 
 export default () => {
-  return <Page title={
-    <EuiFlexGroup justifyContent='spaceBetween' alignItems='center'>
-      <EuiFlexItem>
-        {'Сервісний журнал'}
-      </EuiFlexItem>
-      <NewButton url='/service/new' />
-    </EuiFlexGroup>
-  } >
+  return <Page
+    title={
+      <EuiFlexGroup justifyContent='spaceBetween' alignItems='center'>
+        <EuiFlexItem>
+          {'Сервісний журнал'}
+        </EuiFlexItem>
+        <NewButton url='/service/new' />
+      </EuiFlexGroup>
+    }
+    desc={uiMsg.serviceLog.desc}
+  >
     <ServiceLogsSection />
   </Page>
 }

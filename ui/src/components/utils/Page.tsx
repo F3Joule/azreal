@@ -21,7 +21,7 @@ export const Page = ({ title, desc, children, width }: PageProps) => (
 
       <EuiPageContent>
         <EuiPageContentBody>
-          {desc}
+          <p>{desc}</p>
         </EuiPageContentBody>
         <EuiPageContentBody>
           {children}

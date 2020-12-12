@@ -234,14 +234,14 @@ const MeasurementsSection = ({ sensorId }: Partial<MeasurementsForSensorProps>) 
   const [ measurements, setMeasurements ] = useState<MeasurementType[]>([])
   const [ aggregationType, setAggregationType ] = useState<AggregationType>()
   return <>
-    <EuiSpacer size='xl' />
+    <EuiSpacer size='l' />
     <MeasurementSelector
       onChange={({ measurements = [], aggregationType }) => { 
         setMeasurements(measurements)
         setAggregationType(aggregationType)
       }}
       sensorId={sensorId} />
-    <EuiSpacer size='xl' />
+    <EuiSpacer size='l' />
     <MeasurementTable fileName={`${aggregationType}-measurements`} measurements={measurements} />
     <ChartByParam measurements={measurements} aggregationType={aggregationType} />
   </>
@@ -250,7 +250,10 @@ const MeasurementsSection = ({ sensorId }: Partial<MeasurementsForSensorProps>) 
 export const MeasurementsForSensor = (props: MeasurementsForSensorProps) => <MeasurementsSection {...props} />
 
 export default () => {
-  return <Page title={uiMsg.measurements.title} >
+  return <Page
+    title={uiMsg.measurements.title}
+    desc={uiMsg.measurements.desc}
+  >
     <MeasurementsSection />
   </Page>
 }

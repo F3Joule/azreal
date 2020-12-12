@@ -98,5 +98,5 @@ export const buildExploreLinks = (
       label: 'Журнал',
       onClick: makeAction('/service'),
       iconType: 'logsApp'
-    },
+    }
 ].filter(x => !!x)
