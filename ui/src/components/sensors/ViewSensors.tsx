@@ -67,7 +67,7 @@ export const Sensors = () => {
 
   return <Page
     title={
-      <EuiFlexGroup justifyContent='spaceBetween'>
+      <EuiFlexGroup justifyContent='spaceBetween' alignItems='center'>
         <EuiFlexItem>
           {'Датчики'}
         </EuiFlexItem>

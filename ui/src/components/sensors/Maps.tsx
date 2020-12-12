@@ -1,4 +1,5 @@
 import { EuiButton, EuiDescriptionList, EuiFlexGrid, EuiFlexItem } from '@elastic/eui'
+import { isMobile } from 'mobile-device-detect'
 import Link from 'next/link'
 import React from 'react'
 import { MapContainer, Marker, Popup } from 'react-leaflet'
@@ -59,7 +60,7 @@ const LocationMarker = ({
 </Marker>
 
 export const SensorsMaps = ({ sensors }: LocationsProps) => {
-  return <MapContainer center={KYIV_COORDINATES} zoom={12} style={{ height: '600px' }}>
+  return <MapContainer center={KYIV_COORDINATES} zoom={12} style={{ height: isMobile ? '300px' : '600px' }}>
     {titleLayer}
     {sensors.map((x, i) => <LocationMarker key={i} sensor={x} />)}
   </MapContainer>

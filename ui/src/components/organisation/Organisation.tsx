@@ -1,6 +1,7 @@
 import { EuiDescriptionList, EuiFlexGrid, EuiFlexGroup, EuiFlexItem } from '@elastic/eui'
 import React from 'react'
 import { Files } from '../files/Files'
+import { Images } from '../files/Images'
 import { createDescItem } from '../utils'
 import { Page } from '../utils/Page'
 import { DeleteButton } from './DeleteButton'
@@ -31,7 +32,7 @@ export const ViewOrganisation = ({ organisation }: OrganisationProps) => {
       <OrganisationDesc organisation={organisation} />
     </EuiFlexItem>
     <EuiFlexItem>
-      <Files fileIds={organisation.Document.fileIds} />
+      <Images fileIds={organisation.Document.fileIds} />
     </EuiFlexItem>
   </EuiFlexGroup>
 }

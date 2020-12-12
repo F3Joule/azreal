@@ -41,7 +41,7 @@ const ServiceLog = (serviceLog: GetServiceLogs_az_sensors_ServiceLog) => {
             <Images fileIds={serviceLog.Photo.fileIds} />
           </EuiFlexItem>
           <EuiFlexItem style={{ width: '100%' }}> 
-            <Files fileIds={serviceLog.Document.fileIds} />
+            <Images fileIds={serviceLog.Document.fileIds} />
           </EuiFlexItem>
         </EuiFlexGrid>
       </EuiFlexItem>
@@ -80,7 +80,7 @@ export const ServiceLogsSectionForSensor = (props: ServiceLogsSectionProps) =>
 
 export default () => {
   return <Page title={
-    <EuiFlexGroup justifyContent='spaceBetween'>
+    <EuiFlexGroup justifyContent='spaceBetween' alignItems='center'>
       <EuiFlexItem>
         {'Сервісний журнал'}
       </EuiFlexItem>

@@ -22,6 +22,5 @@ export interface UpsertOrganisationVariables {
   organisationRole?: string | null;
   fullName?: string | null;
   country?: string | null;
-  documentIds?: any | null;
   organisationId: number;
 }

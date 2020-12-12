@@ -7,6 +7,7 @@ import { getErrorMsg } from '../utils'
 import CenteredPage from '../utils/CenteredPage'
 import { checkLogin } from './login'
 import { useAuth } from './AuthContext'
+import uiMsg from 'src/i18/ua_msg'
 
 export const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -57,12 +58,12 @@ export const Login = () => {
   return (
     <EuiForm component='form' onSubmit={handleSubmit(onSubmit)}>
 
-      <EuiFormRow label="Email" fullWidth>
+      <EuiFormRow label={uiMsg.form.email} fullWidth>
         <EuiFieldText name={'email'} inputRef={register} fullWidth />
       </EuiFormRow>
       <EuiFormErrorText>{getErrorMsg(errors['email'])}</EuiFormErrorText> 
 
-      <EuiFormRow label="Пароль" fullWidth>
+      <EuiFormRow label={uiMsg.form.password} fullWidth>
         <EuiFieldPassword name={'password'} inputRef={register} fullWidth type='dual' />
       </EuiFormRow>
       <EuiFormErrorText>{getErrorMsg(errors['password'])}</EuiFormErrorText>
@@ -76,7 +77,7 @@ export const Login = () => {
 }
 
 export const LoginPage = () => {
-  return <CenteredPage title='Вхід'>
+  return <CenteredPage title={uiMsg.auth.logIn}>
     <EuiFlexGroup alignItems='center'>
       <EuiFlexItem grow={false}>
         <EuiImage

@@ -63,11 +63,11 @@ export const Organisations = () => {
 
   return <Page
     title={
-      <EuiFlexGroup justifyContent='spaceBetween'>
+      <EuiFlexGroup justifyContent='spaceBetween' alignItems='center'>
         <EuiFlexItem>
           {'Організації'}
         </EuiFlexItem>
-        <NewButton url='/sensors/new' />
+        <NewButton url='/organizations/new' />
       </EuiFlexGroup>
     }
   >

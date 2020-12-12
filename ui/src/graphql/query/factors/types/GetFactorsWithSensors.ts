@@ -29,6 +29,7 @@ export interface GetFactorsWithSensors_az_sensors_PollutionFactors_aggregate_nod
   e_measurement_unit: GetFactorsWithSensors_az_sensors_PollutionFactors_aggregate_nodes_e_measurement_unit | null;
   maxValue: any | null;
   name: string;
+  ukrainianLabel: string | null;
   SensorFactors: GetFactorsWithSensors_az_sensors_PollutionFactors_aggregate_nodes_SensorFactors[];
 }
 

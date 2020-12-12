@@ -11,15 +11,16 @@ export const GET_MEASUREMENT_BY_SENSOR_ID = gql`
             description
           }
           maxValue
-          label
           name
-          Measurements_aggregate(where: {timestamp: {_lte: $to, _gte: $from}}) {
+          label
+          Measurements_aggregate(where: {timestamp: {_lte: $to, _gte: $from}, sensorId: {_eq: $sensorId}}) {
             aggregate {
               avg {
                 value
               }
             }
           }
+          ukrainianLabel
         }
       }
     }

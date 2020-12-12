@@ -3,11 +3,12 @@ import React from 'react'
 
 type PageProps = {
   title?: React.ReactNode,
+  desc?: React.ReactNode,
   width?: number
   children?: React.ReactNode
 }
 
-export const Page = ({ title, children, width }: PageProps) => (
+export const Page = ({ title, desc, children, width }: PageProps) => (
   <EuiPage restrictWidth={width || true}>
     <EuiPageBody>
       <EuiPageHeader>
@@ -19,6 +20,9 @@ export const Page = ({ title, children, width }: PageProps) => (
       </EuiPageHeader>
 
       <EuiPageContent>
+        <EuiPageContentBody>
+          {desc}
+        </EuiPageContentBody>
         <EuiPageContentBody>
           {children}
         </EuiPageContentBody>

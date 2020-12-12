@@ -1,3 +1,5 @@
+import '../styles/common.scss'
+
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import React, { FunctionComponent } from 'react'

@@ -12,6 +12,7 @@ const GET_FACTORS_WITH_SENSORS = gql`
         }
         maxValue
         name
+        ukrainianLabel
         SensorFactors {
           Sensor {
             sensorId

@@ -4,6 +4,7 @@ import {
 } from '@elastic/eui'
 
 import { setInitialTheme, setTheme } from '../../lib/theme'
+import uiMsg from 'src/i18/ua_msg'
 
 const initialTheme = setInitialTheme()
 
@@ -34,7 +35,7 @@ const SwitchTheme: FunctionComponent = () => {
   }
 
   return <EuiSwitch
-    label={`${isDark ? 'Темна' : 'Світла'} тема`}
+    label={isDark ? uiMsg.theme.dark : uiMsg.theme.light}
     checked={isDark}
     onChange={(e) => handleChangeTheme(e.target.checked ? 'dark' : 'light')}
     compressed

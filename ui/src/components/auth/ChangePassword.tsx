@@ -9,6 +9,7 @@ import { getErrorMsg } from '../utils'
 import * as sha256 from 'fast-sha256'
 import { useAuthObj } from './AuthContext'
 import CenteredPage from '../utils/CenteredPage'
+import uiMsg from 'src/i18/ua_msg'
 
 type ChangePasswordKeys = keyof ChangePasswordVariables
 
@@ -49,7 +50,7 @@ export const ChangePassword = () => {
         router.back()
       }
 
-      throw new Error('Ви ввели неправильний старий пароль')
+      throw new Error(uiMsg.auth.error.fogotOldPassword)
     } catch (error) {
       console.error(error)
       setError(error.toString())
@@ -72,12 +73,12 @@ export const ChangePassword = () => {
   return (
     <EuiForm component='form' onSubmit={handleSubmit(onSubmit)}>
 
-      <EuiFormRow label="Старий пароль" fullWidth>
+      <EuiFormRow label={uiMsg.auth.oldPassword} fullWidth>
         <EuiFieldPassword name={getFiledName('oldpassword')} inputRef={register} type='dual' fullWidth />
       </EuiFormRow>
       <EuiFormErrorText>{getErrorMsg(errors[getFiledName('oldpassword')])}</EuiFormErrorText>
 
-      <EuiFormRow label="Новий пароль" fullWidth>
+      <EuiFormRow label={uiMsg.auth.newPassword} fullWidth>
         <EuiFieldPassword name={getFiledName('password')} inputRef={register} type='dual' fullWidth />
       </EuiFormRow>
       <EuiFormErrorText>{getErrorMsg(errors[getFiledName('password')])}</EuiFormErrorText>
@@ -90,7 +91,7 @@ export const ChangePassword = () => {
 }
 
 export const ChangePasswordPage = () => {
-  return <CenteredPage title='Зміна паролю'>
+  return <CenteredPage title={uiMsg.auth.changePassword}>
     <EuiFlexGroup alignItems='center'>
       <EuiFlexItem grow={false}>
         <EuiImage

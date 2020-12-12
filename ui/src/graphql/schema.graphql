@@ -2032,6 +2032,7 @@ type az_sensors_PollutionFactors {
   label: String!
   maxValue: float8
   name: String!
+  ukrainianLabel: String
   unit: az_sensors_e_measurement_unit_enum
 }
 
@@ -2099,6 +2100,7 @@ input az_sensors_PollutionFactors_bool_exp {
   label: String_comparison_exp
   maxValue: float8_comparison_exp
   name: String_comparison_exp
+  ukrainianLabel: String_comparison_exp
   unit: az_sensors_e_measurement_unit_enum_comparison_exp
 }
 
@@ -2121,6 +2123,7 @@ input az_sensors_PollutionFactors_insert_input {
   label: String
   maxValue: float8
   name: String
+  ukrainianLabel: String
   unit: az_sensors_e_measurement_unit_enum
 }
 
@@ -2129,6 +2132,7 @@ type az_sensors_PollutionFactors_max_fields {
   label: String
   maxValue: float8
   name: String
+  ukrainianLabel: String
 }
 
 # order by max() on columns of table "az_sensors.PollutionFactors"
@@ -2136,6 +2140,7 @@ input az_sensors_PollutionFactors_max_order_by {
   label: order_by
   maxValue: order_by
   name: order_by
+  ukrainianLabel: order_by
 }
 
 # aggregate min on columns
@@ -2143,6 +2148,7 @@ type az_sensors_PollutionFactors_min_fields {
   label: String
   maxValue: float8
   name: String
+  ukrainianLabel: String
 }
 
 # order by min() on columns of table "az_sensors.PollutionFactors"
@@ -2150,6 +2156,7 @@ input az_sensors_PollutionFactors_min_order_by {
   label: order_by
   maxValue: order_by
   name: order_by
+  ukrainianLabel: order_by
 }
 
 # response of any mutation on the table "az_sensors.PollutionFactors"
@@ -2182,6 +2189,7 @@ input az_sensors_PollutionFactors_order_by {
   label: order_by
   maxValue: order_by
   name: order_by
+  ukrainianLabel: order_by
   unit: order_by
 }
 
@@ -2202,6 +2210,9 @@ enum az_sensors_PollutionFactors_select_column {
   name
 
   # column name
+  ukrainianLabel
+
+  # column name
   unit
 }
 
@@ -2210,6 +2221,7 @@ input az_sensors_PollutionFactors_set_input {
   label: String
   maxValue: float8
   name: String
+  ukrainianLabel: String
   unit: az_sensors_e_measurement_unit_enum
 }
 
@@ -2263,6 +2275,9 @@ enum az_sensors_PollutionFactors_update_column {
 
   # column name
   name
+
+  # column name
+  ukrainianLabel
 
   # column name
   unit
@@ -2662,6 +2677,7 @@ type az_sensors_Sensors {
   manufacturer: String
   model: String
   sensorId: Int!
+  sideNumber: Int!
 }
 
 # aggregated selection of "az_sensors.Sensors"
@@ -2710,12 +2726,14 @@ input az_sensors_Sensors_arr_rel_insert_input {
 type az_sensors_Sensors_avg_fields {
   locationId: Float
   sensorId: Float
+  sideNumber: Float
 }
 
 # order by avg() on columns of table "az_sensors.Sensors"
 input az_sensors_Sensors_avg_order_by {
   locationId: order_by
   sensorId: order_by
+  sideNumber: order_by
 }
 
 # Boolean expression to filter rows from the table "az_sensors.Sensors". All fields are combined with a logical 'AND'.
@@ -2732,6 +2750,7 @@ input az_sensors_Sensors_bool_exp {
   manufacturer: String_comparison_exp
   model: String_comparison_exp
   sensorId: Int_comparison_exp
+  sideNumber: Int_comparison_exp
 }
 
 # unique or primary key constraints on table "az_sensors.Sensors"
@@ -2747,6 +2766,7 @@ enum az_sensors_Sensors_constraint {
 input az_sensors_Sensors_inc_input {
   locationId: Int
   sensorId: Int
+  sideNumber: Int
 }
 
 # input type for inserting data into table "az_sensors.Sensors"
@@ -2760,6 +2780,7 @@ input az_sensors_Sensors_insert_input {
   manufacturer: String
   model: String
   sensorId: Int
+  sideNumber: Int
 }
 
 # aggregate max on columns
@@ -2768,6 +2789,7 @@ type az_sensors_Sensors_max_fields {
   manufacturer: String
   model: String
   sensorId: Int
+  sideNumber: Int
 }
 
 # order by max() on columns of table "az_sensors.Sensors"
@@ -2776,6 +2798,7 @@ input az_sensors_Sensors_max_order_by {
   manufacturer: order_by
   model: order_by
   sensorId: order_by
+  sideNumber: order_by
 }
 
 # aggregate min on columns
@@ -2784,6 +2807,7 @@ type az_sensors_Sensors_min_fields {
   manufacturer: String
   model: String
   sensorId: Int
+  sideNumber: Int
 }
 
 # order by min() on columns of table "az_sensors.Sensors"
@@ -2792,6 +2816,7 @@ input az_sensors_Sensors_min_order_by {
   manufacturer: order_by
   model: order_by
   sensorId: order_by
+  sideNumber: order_by
 }
 
 # response of any mutation on the table "az_sensors.Sensors"
@@ -2827,6 +2852,7 @@ input az_sensors_Sensors_order_by {
   manufacturer: order_by
   model: order_by
   sensorId: order_by
+  sideNumber: order_by
 }
 
 # primary key columns input for table: "az_sensors.Sensors"
@@ -2850,6 +2876,9 @@ enum az_sensors_Sensors_select_column {
 
   # column name
   sensorId
+
+  # column name
+  sideNumber
 }
 
 # input type for updating data in table "az_sensors.Sensors"
@@ -2859,54 +2888,63 @@ input az_sensors_Sensors_set_input {
   manufacturer: String
   model: String
   sensorId: Int
+  sideNumber: Int
 }
 
 # aggregate stddev on columns
 type az_sensors_Sensors_stddev_fields {
   locationId: Float
   sensorId: Float
+  sideNumber: Float
 }
 
 # order by stddev() on columns of table "az_sensors.Sensors"
 input az_sensors_Sensors_stddev_order_by {
   locationId: order_by
   sensorId: order_by
+  sideNumber: order_by
 }
 
 # aggregate stddev_pop on columns
 type az_sensors_Sensors_stddev_pop_fields {
   locationId: Float
   sensorId: Float
+  sideNumber: Float
 }
 
 # order by stddev_pop() on columns of table "az_sensors.Sensors"
 input az_sensors_Sensors_stddev_pop_order_by {
   locationId: order_by
   sensorId: order_by
+  sideNumber: order_by
 }
 
 # aggregate stddev_samp on columns
 type az_sensors_Sensors_stddev_samp_fields {
   locationId: Float
   sensorId: Float
+  sideNumber: Float
 }
 
 # order by stddev_samp() on columns of table "az_sensors.Sensors"
 input az_sensors_Sensors_stddev_samp_order_by {
   locationId: order_by
   sensorId: order_by
+  sideNumber: order_by
 }
 
 # aggregate sum on columns
 type az_sensors_Sensors_sum_fields {
   locationId: Int
   sensorId: Int
+  sideNumber: Int
 }
 
 # order by sum() on columns of table "az_sensors.Sensors"
 input az_sensors_Sensors_sum_order_by {
   locationId: order_by
   sensorId: order_by
+  sideNumber: order_by
 }
 
 # update columns of table "az_sensors.Sensors"
@@ -2925,42 +2963,51 @@ enum az_sensors_Sensors_update_column {
 
   # column name
   sensorId
+
+  # column name
+  sideNumber
 }
 
 # aggregate var_pop on columns
 type az_sensors_Sensors_var_pop_fields {
   locationId: Float
   sensorId: Float
+  sideNumber: Float
 }
 
 # order by var_pop() on columns of table "az_sensors.Sensors"
 input az_sensors_Sensors_var_pop_order_by {
   locationId: order_by
   sensorId: order_by
+  sideNumber: order_by
 }
 
 # aggregate var_samp on columns
 type az_sensors_Sensors_var_samp_fields {
   locationId: Float
   sensorId: Float
+  sideNumber: Float
 }
 
 # order by var_samp() on columns of table "az_sensors.Sensors"
 input az_sensors_Sensors_var_samp_order_by {
   locationId: order_by
   sensorId: order_by
+  sideNumber: order_by
 }
 
 # aggregate variance on columns
 type az_sensors_Sensors_variance_fields {
   locationId: Float
   sensorId: Float
+  sideNumber: Float
 }
 
 # order by variance() on columns of table "az_sensors.Sensors"
 input az_sensors_Sensors_variance_order_by {
   locationId: order_by
   sensorId: order_by
+  sideNumber: order_by
 }
 
 # columns and relationships of "az_sensors.ServiceLog"

@@ -31,9 +31,10 @@ export interface GetMeasurementsBySensorId_az_sensors_Sensors_SensorFactors_Poll
   __typename: "az_sensors_PollutionFactors";
   e_measurement_unit: GetMeasurementsBySensorId_az_sensors_Sensors_SensorFactors_PollutionFactor_e_measurement_unit | null;
   maxValue: any | null;
-  label: string;
   name: string;
+  label: string;
   Measurements_aggregate: GetMeasurementsBySensorId_az_sensors_Sensors_SensorFactors_PollutionFactor_Measurements_aggregate;
+  ukrainianLabel: string | null;
 }
 
 export interface GetMeasurementsBySensorId_az_sensors_Sensors_SensorFactors {

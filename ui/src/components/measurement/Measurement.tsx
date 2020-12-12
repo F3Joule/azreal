@@ -1,9 +1,9 @@
-import { EuiSpacer, EuiDatePicker, EuiButton, EuiFormErrorText, EuiLoadingSpinner, EuiFlexGroup, EuiFlexItem, EuiSelect, EuiDataGridColumn, EuiForm, EuiFormRow, EuiDatePickerRange} from '@elastic/eui'
+import { EuiSpacer, EuiDatePicker, EuiButton, EuiFormErrorText, EuiFlexGroup, EuiFlexItem, EuiSelect, EuiDataGridColumn, EuiForm, EuiDatePickerRange} from '@elastic/eui'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Page } from '../utils/Page'
 import { ChartByParam } from './ChartByParams'
 import moment from 'moment'
-import { aggregationLimit, fillInitValues, findErrors, getErrorMsg } from '../utils'
+import { findErrors, getErrorMsg } from '../utils'
 import { SelectorOptionType } from 'src/types'
 import { SensorsSelect } from './SensorsSelect'
 import { DataGrid } from '../utils/DataGrid'
@@ -14,9 +14,9 @@ import { useAuthObj } from '../auth/AuthContext'
 import { AggregationType, MeasurementsData, MeasurementType } from './types'
 import { getMeasurements } from './aggregations'
 import { Loading } from '../utils/loading'
-import { useGetFactors } from 'src/graphql/query/factors/getFactorsWithSensors'
 import { calculateCAQI } from './utils'
 import { useNotification } from '../utils/Notifications'
+import uiMsg from 'src/i18/ua_msg'
 
 export const measurementsSchema = yup.object().shape({
   sensorId: yup.number(),
@@ -73,23 +73,23 @@ const MeasurementTable = ({ measurements, fileName }: MeasurementTProps) => {
 
 const measurementSelectorOptions: SelectorOptionType[] = [
   {
-    text: 'Година',
+    text: uiMsg.measurements.aggregation.hour,
     value: 'hours'
   },
   {
-    text: 'День',
+    text: uiMsg.measurements.aggregation.day,
     value: 'days'
   },
   {
-    text: 'Тиждень',
+    text: uiMsg.measurements.aggregation.week,
     value: 'weeks'
   },
   {
-    text: 'Місяць',
+    text: uiMsg.measurements.aggregation.month,
     value: 'months'
   },
   {
-    text: 'Рік',
+    text: uiMsg.measurements.aggregation.year,
     value: 'years'
   }
 ]
@@ -128,12 +128,12 @@ export const MeasurementSelector = ({ onChange, sensorId: initialSensorId }: Mea
       }
   
       const { measurements, lagreLimit } = await getMeasurements(variables, token)
-
+      
       if (lagreLimit) {
         addToast({
-          title: 'Ліміт агрегацій перевищено!',
+          title: uiMsg.measurements.limit.title,
           color: 'warning',
-          text: `Ви отримали лише ${aggregationLimit} перших вимірів. Щоб отримати більше даних підвищіть рівень агрегації.`
+          text: uiMsg.measurements.limit.desc
         })
       }
 
@@ -165,7 +165,7 @@ export const MeasurementSelector = ({ onChange, sensorId: initialSensorId }: Mea
         <EuiFlexItem style={{ maxWidth: 175 }} >
           <EuiSelect
             name='aggregation'
-            placeholder="Оберіть розмір вибірки"
+            placeholder={uiMsg.form.aggType}
             defaultValue={undefined}
             options={measurementSelectorOptions}
             inputRef={register}
@@ -182,6 +182,7 @@ export const MeasurementSelector = ({ onChange, sensorId: initialSensorId }: Mea
                   showTimeSelect
                   selected={value ? moment(value) : undefined}
                   onChange={onChange}
+                  placeholder={uiMsg.form.fromDate}
                   fullWidth
                   maxDate={now}
                 />
@@ -195,6 +196,7 @@ export const MeasurementSelector = ({ onChange, sensorId: initialSensorId }: Mea
                   showTimeSelect
                   selected={value ? moment(value) : undefined}
                   onChange={onChange}
+                  placeholder={uiMsg.form.endDate}
                   fullWidth
                   maxDate={now}
                 />
@@ -207,7 +209,7 @@ export const MeasurementSelector = ({ onChange, sensorId: initialSensorId }: Mea
           <SensorsSelect
             name='sensorId'
             inputRef={register}
-            placeholder='Id сенсора'
+            placeholder={uiMsg.form.sensorId}
             defaultValue={undefined}
             fullWidth
             required
@@ -248,7 +250,7 @@ const MeasurementsSection = ({ sensorId }: Partial<MeasurementsForSensorProps>) 
 export const MeasurementsForSensor = (props: MeasurementsForSensorProps) => <MeasurementsSection {...props} />
 
 export default () => {
-  return <Page title='Вибірка даних' >
+  return <Page title={uiMsg.measurements.title} >
     <MeasurementsSection />
   </Page>
 }

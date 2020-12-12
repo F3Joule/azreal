@@ -9,6 +9,7 @@ import {
   EuiImage,
 } from '@elastic/eui'
 import { useRouter } from 'next/router'
+import uiMsg from 'src/i18/ua_msg'
 
 export const HomePage = () => {
   const router = useRouter()
@@ -28,25 +29,25 @@ export const HomePage = () => {
         <EuiFlexItem>
           <EuiCard
             icon={<EuiIcon size="xxl" type={'watchesApp'} />}
-            title='Список датчиків'
-            description="Карта та таблиця встановлених датчиків"
-            onClick={() => router.push('/sensors')}
+            title={uiMsg.sensors.info.title}
+            description={uiMsg.sensors.info.desc}
+            onClick={() => router.push(uiMsg.sensors.path)}
           />
         </EuiFlexItem>
         <EuiFlexItem>
           <EuiCard
             icon={<EuiIcon size="xxl" type={'visualizeApp'} />}
-            title='Вимірювання'
-            description="Отримайте дані за датчиком у певному проміжку часу"
-            onClick={() => router.push('/measurements')}
+            title={uiMsg.measurements.info.title}
+            description={uiMsg.measurements.info.desc}
+            onClick={() => router.push(uiMsg.measurements.path)}
           />
         </EuiFlexItem>
         <EuiFlexItem>
           <EuiCard
             icon={<EuiIcon size="xxl" type={'logsApp'} />}
-            title='Журнал обслуговування'
-            description="Коли? Де? Хто?"
-            onClick={() => router.push('/service')}
+            title={uiMsg.serviceLog.info.title}
+            description={uiMsg.serviceLog.info.desc}
+            onClick={() => router.push(uiMsg.serviceLog.path)}
           />
         </EuiFlexItem>
       </EuiFlexGroup>
