@@ -31,30 +31,31 @@ VALUES ('mgpcm', 'µg/m³'),
 
 CREATE TABLE IF NOT EXISTS "az_sensors"."PollutionFactors"
 (
-    "name"     text PRIMARY KEY,
-    "label"    text NOT NULL,
-    "unit"     text,
+    "name"           text PRIMARY KEY,
+    "label"          text NOT NULL,
+    "ukrainianLabel" text,
+    "unit"           text,
     FOREIGN KEY ("unit")
         REFERENCES "az_sensors"."e_measurement_unit" ("value") MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE SET NULL,
-    "maxValue" double precision
+    "maxValue"       double precision
 );
-INSERT INTO "az_sensors"."PollutionFactors" ("name", "label", "unit")
-VALUES ('PM1', 'PM1', 'mgpcm'),
-       ('PM25', 'PM2.5', 'mgpcm'),
-       ('PM10', 'PM10', 'mgpcm'),
-       ('TEMPERATURE', 'Temperature', 'celsium'),
-       ('HUMIDITY', 'Humidity', 'percent'),
-       ('PRESSURE', 'Pressure', 'hPa'),
-       ('WIND_SPEED', 'Wind speed', 'kmph'),
-       ('WIND_BEARING', 'Wind bearing', 'degree'),
-       ('NO2', 'NO₂', 'mgpcm'),
-       ('O3', 'O₃', 'mgpcm'),
-       ('SO2', 'SO₂', 'mgpcm'),
-       ('CO', 'CO', 'mgpcm'),
-       ('H2S', 'H₂S', 'mgpcm'),
-       ('NO', 'NO', 'mgpcm');
+INSERT INTO "az_sensors"."PollutionFactors" ("name", "label", "ukrainianLabel", "unit")
+VALUES ('PM1', 'PM1', '', 'mgpcm'),
+       ('PM25', 'PM2.5', '', 'mgpcm'),
+       ('PM10', 'PM10', '', 'mgpcm'),
+       ('TEMPERATURE', 'Temperature', 'Температура', 'celsium'),
+       ('HUMIDITY', 'Humidity', 'Вологість', 'percent'),
+       ('PRESSURE', 'Pressure', 'Тиск', 'hPa'),
+       ('WIND_SPEED', 'Wind speed', 'Швидкість вітру', 'kmph'),
+       ('WIND_BEARING', 'Wind bearing', 'Напрям вітру', 'degree'),
+       ('NO2', 'NO₂', '', 'mgpcm'),
+       ('O3', 'O₃', '', 'mgpcm'),
+       ('SO2', 'SO₂', '', 'mgpcm'),
+       ('CO', 'CO', '', 'mgpcm'),
+       ('H2S', 'H₂S', '', 'mgpcm'),
+       ('NO', 'NO', '', 'mgpcm');
 
 ---
 
@@ -84,6 +85,7 @@ CREATE TABLE IF NOT EXISTS "az_sensors"."Sensors"
         ON UPDATE CASCADE
         ON DELETE RESTRICT,
     "isActive"     bool    NOT NULL DEFAULT FALSE,
+    "sideNumber"   integer,
     "manufacturer" text,
     "model"        text,
     UNIQUE ("sensorId", "locationId")
