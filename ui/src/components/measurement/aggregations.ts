@@ -18,18 +18,21 @@ const parseMeasurementData = (measurements: GetMeasurementsBySensorId_az_sensors
       Measurements_aggregate:
         { aggregate:
           { avg:
-            { value }
+            {
+              value,
+              CAQI
+            }
           }
         }
     } = PollutionFactor
     
     return value
-      ? { label: ukrainianLabel || label, maxValue, unit: description, name, value }
+      ? { label: ukrainianLabel || label, maxValue, unit: description, name, value, CAQI }
       : undefined
   })
 
 const createMeasuremntQuery = ({ sensorId, to, from }: CommonAggregationData) => ({
-  'query': 'query GetMeasurementsBySensorId($sensorId: Int! = 0, $from: timestamp, $to: timestamp) { az_sensors_Sensors(where: {sensorId: {_eq: $sensorId}}) { SensorFactors { PollutionFactor { e_measurement_unit { description } maxValue name label Measurements_aggregate(where: {timestamp: {_lte: $to, _gte: $from}, sensorId: {_eq: $sensorId}}) { aggregate { avg { value } } } ukrainianLabel } } } } ',
+  'query': 'query GetMeasurementsBySensorId($sensorId: Int! = 0, $from: timestamp, $to: timestamp) { az_sensors_Sensors(where: {sensorId: {_eq: $sensorId}}) { SensorFactors { PollutionFactor { e_measurement_unit { description } maxValue name label Measurements_aggregate(where: {timestamp: {_lte: $to, _gte: $from}, sensorId: {_eq: $sensorId}}) { aggregate { avg { value CAQI } } } ukrainianLabel } } } } ',
   'operationName': 'GetMeasurementsBySensorId',
   'variables': { sensorId, to, from }
 })

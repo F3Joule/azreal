@@ -38,11 +38,15 @@ const MeasurementTable = ({ measurements, fileName }: MeasurementTProps) => {
   const measurementData = measurements.map(({ timestamp, sensorId, values }) => {
 
     const measurementValue = {}
-    const measurementsValues = []
-    values.forEach(({ label, unit, name, value }) => {
+    let CAQI = 0
+
+    values.forEach(({ label, unit, value, CAQI: _CAQI }) => {
       const key = `${label}(${unit})`
       measurementValue[key] = value?.toFixed(3)
-      measurementsValues.push({ name, value })
+
+      if (_CAQI > CAQI) {
+        CAQI = _CAQI
+      }
 
       dynamicColumnIds.add(key)
     })
@@ -50,8 +54,8 @@ const MeasurementTable = ({ measurements, fileName }: MeasurementTProps) => {
     return {
       timestamp,
       sensorId,
+      CAQI,
       ...measurementValue,
-      CAQI: calculateCAQI(measurementsValues)
     }
   })
 

@@ -882,6 +882,8 @@ input az_docs_Photo_variance_order_by {
 
 # columns and relationships of "az_measurements.Measurements"
 type az_measurements_Measurements {
+  CAQI: float8!
+
   # An object relationship
   PollutionFactor: az_sensors_PollutionFactors!
 
@@ -938,12 +940,14 @@ input az_measurements_Measurements_arr_rel_insert_input {
 
 # aggregate avg on columns
 type az_measurements_Measurements_avg_fields {
+  CAQI: Float
   sensorId: Float
   value: Float
 }
 
 # order by avg() on columns of table "az_measurements.Measurements"
 input az_measurements_Measurements_avg_order_by {
+  CAQI: order_by
   sensorId: order_by
   value: order_by
 }
@@ -951,6 +955,7 @@ input az_measurements_Measurements_avg_order_by {
 # Boolean expression to filter rows from the table "az_measurements.Measurements".
 # All fields are combined with a logical 'AND'.
 input az_measurements_Measurements_bool_exp {
+  CAQI: float8_comparison_exp
   PollutionFactor: az_sensors_PollutionFactors_bool_exp
   Sensor: az_sensors_Sensors_bool_exp
   _and: [az_measurements_Measurements_bool_exp]
@@ -971,12 +976,14 @@ enum az_measurements_Measurements_constraint {
 
 # input type for incrementing integer column in table "az_measurements.Measurements"
 input az_measurements_Measurements_inc_input {
+  CAQI: float8
   sensorId: Int
   value: float8
 }
 
 # input type for inserting data into table "az_measurements.Measurements"
 input az_measurements_Measurements_insert_input {
+  CAQI: float8
   PollutionFactor: az_sensors_PollutionFactors_obj_rel_insert_input
   Sensor: az_sensors_Sensors_obj_rel_insert_input
   factorName: String
@@ -988,6 +995,7 @@ input az_measurements_Measurements_insert_input {
 
 # aggregate max on columns
 type az_measurements_Measurements_max_fields {
+  CAQI: float8
   factorName: String
   sensorId: Int
   timestamp: timestamp
@@ -996,6 +1004,7 @@ type az_measurements_Measurements_max_fields {
 
 # order by max() on columns of table "az_measurements.Measurements"
 input az_measurements_Measurements_max_order_by {
+  CAQI: order_by
   factorName: order_by
   sensorId: order_by
   timestamp: order_by
@@ -1004,6 +1013,7 @@ input az_measurements_Measurements_max_order_by {
 
 # aggregate min on columns
 type az_measurements_Measurements_min_fields {
+  CAQI: float8
   factorName: String
   sensorId: Int
   timestamp: timestamp
@@ -1012,6 +1022,7 @@ type az_measurements_Measurements_min_fields {
 
 # order by min() on columns of table "az_measurements.Measurements"
 input az_measurements_Measurements_min_order_by {
+  CAQI: order_by
   factorName: order_by
   sensorId: order_by
   timestamp: order_by
@@ -1042,6 +1053,7 @@ input az_measurements_Measurements_on_conflict {
 
 # ordering options when selecting data from "az_measurements.Measurements"
 input az_measurements_Measurements_order_by {
+  CAQI: order_by
   PollutionFactor: az_sensors_PollutionFactors_order_by
   Sensor: az_sensors_Sensors_order_by
   factorName: order_by
@@ -1053,6 +1065,9 @@ input az_measurements_Measurements_order_by {
 
 # select columns of table "az_measurements.Measurements"
 enum az_measurements_Measurements_select_column {
+  # column name
+  CAQI
+
   # column name
   factorName
 
@@ -1071,6 +1086,7 @@ enum az_measurements_Measurements_select_column {
 
 # input type for updating data in table "az_measurements.Measurements"
 input az_measurements_Measurements_set_input {
+  CAQI: float8
   factorName: String
   locationPoint: point
   sensorId: Int
@@ -1080,54 +1096,65 @@ input az_measurements_Measurements_set_input {
 
 # aggregate stddev on columns
 type az_measurements_Measurements_stddev_fields {
+  CAQI: Float
   sensorId: Float
   value: Float
 }
 
 # order by stddev() on columns of table "az_measurements.Measurements"
 input az_measurements_Measurements_stddev_order_by {
+  CAQI: order_by
   sensorId: order_by
   value: order_by
 }
 
 # aggregate stddev_pop on columns
 type az_measurements_Measurements_stddev_pop_fields {
+  CAQI: Float
   sensorId: Float
   value: Float
 }
 
 # order by stddev_pop() on columns of table "az_measurements.Measurements"
 input az_measurements_Measurements_stddev_pop_order_by {
+  CAQI: order_by
   sensorId: order_by
   value: order_by
 }
 
 # aggregate stddev_samp on columns
 type az_measurements_Measurements_stddev_samp_fields {
+  CAQI: Float
   sensorId: Float
   value: Float
 }
 
 # order by stddev_samp() on columns of table "az_measurements.Measurements"
 input az_measurements_Measurements_stddev_samp_order_by {
+  CAQI: order_by
   sensorId: order_by
   value: order_by
 }
 
 # aggregate sum on columns
 type az_measurements_Measurements_sum_fields {
+  CAQI: float8
   sensorId: Int
   value: float8
 }
 
 # order by sum() on columns of table "az_measurements.Measurements"
 input az_measurements_Measurements_sum_order_by {
+  CAQI: order_by
   sensorId: order_by
   value: order_by
 }
 
 # update columns of table "az_measurements.Measurements"
 enum az_measurements_Measurements_update_column {
+  # column name
+  CAQI
+
   # column name
   factorName
 
@@ -1146,36 +1173,42 @@ enum az_measurements_Measurements_update_column {
 
 # aggregate var_pop on columns
 type az_measurements_Measurements_var_pop_fields {
+  CAQI: Float
   sensorId: Float
   value: Float
 }
 
 # order by var_pop() on columns of table "az_measurements.Measurements"
 input az_measurements_Measurements_var_pop_order_by {
+  CAQI: order_by
   sensorId: order_by
   value: order_by
 }
 
 # aggregate var_samp on columns
 type az_measurements_Measurements_var_samp_fields {
+  CAQI: Float
   sensorId: Float
   value: Float
 }
 
 # order by var_samp() on columns of table "az_measurements.Measurements"
 input az_measurements_Measurements_var_samp_order_by {
+  CAQI: order_by
   sensorId: order_by
   value: order_by
 }
 
 # aggregate variance on columns
 type az_measurements_Measurements_variance_fields {
+  CAQI: Float
   sensorId: Float
   value: Float
 }
 
 # order by variance() on columns of table "az_measurements.Measurements"
 input az_measurements_Measurements_variance_order_by {
+  CAQI: order_by
   sensorId: order_by
   value: order_by
 }
@@ -2677,7 +2710,7 @@ type az_sensors_Sensors {
   manufacturer: String
   model: String
   sensorId: Int!
-  sideNumber: Int!
+  sideNumber: Int
 }
 
 # aggregated selection of "az_sensors.Sensors"
