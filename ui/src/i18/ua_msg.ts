@@ -21,7 +21,8 @@ export const uiMsg = {
   auth: {
     error: {
       fogotOldPassword: 'Ви ввели неправильний старий пароль',
-      common: 'Невірний логін або пароль' 
+      common: 'Невірний логін або пароль',
+      incorectPassword: 'Невірний пароль'
     },
     oldPassword: 'Старий пароль',
     newPassword: 'Новий пароль',

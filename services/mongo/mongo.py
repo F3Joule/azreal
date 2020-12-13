@@ -12,9 +12,9 @@ if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
 
 app = Flask(__name__)
-CORS(app)
-port = os.getenv('PORT')
+cors = CORS(app, resources={r"/*": {"origins": os.getenv('CORS_ALLOWED_ORIGIN')}})
 
+port = os.getenv('PORT')
 mongo_client = MongoClient(os.getenv('MONGO_HOSTNAME_URI'))
 db = mongo_client['files']
 grid_fs = GridFS(db)

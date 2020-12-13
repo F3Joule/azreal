@@ -15,11 +15,16 @@ export const checkLogin = async (email: string, password: string) => {
         'cache-control': 'no-cache',
       }}
     )
-  
-    if (data?.error) throw new Error(uiMsg.auth.error.common)
-  
+
     return { data: data as Auth_Obj, token: hasuraSecret }
   } catch (error) {
-    return { error }
+    const errMsg = error.toString()
+    if (errMsg.includes('404'))
+      return { error: uiMsg.auth.error.common }
+
+    if (errMsg.includes('401'))
+      return { error: uiMsg.auth.error.incorectPassword }
+
+    return { errMsg }
   }
 }

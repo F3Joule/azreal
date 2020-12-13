@@ -18,7 +18,6 @@ export const Login = () => {
   const { setAuthObj } = useAuth()
   const [ loading, setLoading ] = useState(false)
   const [ error, setError ] = useState('')
-  const router = useRouter()
 
   const { register, handleSubmit, errors } = useForm()
 
@@ -39,7 +38,6 @@ export const Login = () => {
       console.error(error)
       setError(error.toString())
       setLoading(false)
-      router.reload()
     }
   }
 
