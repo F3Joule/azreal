@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS "az_measurements"."Measurements"
         ON UPDATE CASCADE
         ON DELETE RESTRICT,
     "value"         double precision NOT NULL,
+    "CAQI"          double precision NOT NULL DEFAULT 0,
 
     UNIQUE ("sensorId", "timestamp", "factorName")
 );
