@@ -16,13 +16,21 @@ def parse_airly_measurements(sensor_id):
         return
 
     current_values = info['current']
+    measurement_values = current_values['values']
+
     datetime = current_values['tillDateTime']
     sensor_values.setdefault('tillDateTime', datetime)
-    measurement_values = current_values['values']
+
     for value_data in measurement_values:
         sensor_values.setdefault(str(sensor_id), [])
         factor_name = value_data['name']
         value = value_data['value']
-        sensor_values.get(str(sensor_id)).append((factor_name, value))
+        sensor_values[str(sensor_id)].append((factor_name, value))
+
+    sensor_values.setdefault('AQI', 0)
+    air_quality_indices = current_values['indexes']
+    for index in air_quality_indices:
+        if index['name'] == 'AIRLY_CAQI':
+            sensor_values['AQI'] = index['value']
 
     return sensor_values
