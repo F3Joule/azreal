@@ -23,6 +23,7 @@ export interface GetSensors_az_sensors_Sensors {
   manufacturer: string | null;
   model: string | null;
   sensorId: number;
+  sideNumber: number;
   isActive: boolean;
   Location: GetSensors_az_sensors_Sensors_Location;
 }

@@ -3,7 +3,7 @@ import { gql } from 'apollo-boost'
 import { GetServiceLogs, GetServiceLogsVariables } from './types/GetServiceLogs'
 
 export const GET_SERVICE_LOGS =gql`
-query GetServiceLogs($sensorId: Int = 0, $from: timestamp, $to: timestamp) {
+query GetServiceLogs($sensorId: Int, $from: timestamp, $to: timestamp) {
   az_sensors_ServiceLog(order_by: {timestamp: desc}, where: {sensorId: {_eq: $sensorId}, timestamp: {_gte: $from, _lte: $to}}) {
     timestamp
     serviceKind

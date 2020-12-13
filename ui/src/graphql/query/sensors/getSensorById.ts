@@ -8,6 +8,7 @@ query GetSensorById($id: Int = 10001) {
     sensorId
     model
     manufacturer
+    sideNumber
     Location {
       address
       airlyLink

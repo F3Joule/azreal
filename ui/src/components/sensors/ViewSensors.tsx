@@ -18,8 +18,14 @@ type ViewSensorsProps = {
 const ViewSensors = ({ sensors }: ViewSensorsProps) => {
   const columns: EuiDataGridColumn[] = [ {
     id: 'sensorId',
-    display: 'ID датчика',
-    displayAsText: 'ID датчика',
+    display: 'Airly Id датчика',
+    displayAsText: 'Airly Id',
+    initialWidth: 100
+  },
+  {
+    id: 'sideNumber',
+    display: 'Бортовий номер',
+    displayAsText: 'Бортовий номер',
     initialWidth: 100
   },
   {
@@ -43,10 +49,11 @@ const ViewSensors = ({ sensors }: ViewSensorsProps) => {
     displayAsText: 'Статус'
   } ]
 
-  const data = sensors.map(({ Location: { address, airlyLink }, sensorId, isActive, manufacturer, model }) => ({
+  const data = sensors.map(({ Location: { address, airlyLink }, sensorId, isActive, manufacturer, sideNumber, model }) => ({
     sensorId: <Link href='/sensors/[sensorId]' as={`/sensors/${sensorId}`}><a>{sensorId}</a></Link>,
     manufacturer,
     model,
+    sideNumber,
     address: <a href={airlyLink}>{address}</a>,
     status: getSensorStatus(isActive)
   }))

@@ -37,14 +37,14 @@ const ServiceLog = (serviceLog: GetServiceLogs_az_sensors_ServiceLog) => {
   return <EuiPanel paddingSize="l" style={{ marginTop: '1rem' }}>
     <EuiFlexGroup alignItems='flexStart'>
       <EuiFlexItem>
-        <EuiFlexGrid columns={1}>
-          <EuiFlexItem style={{ width: '100%' }}> 
+        <EuiFlexGroup>
+          <EuiFlexItem> 
             <Images fileIds={serviceLog.Photo.fileIds} />
           </EuiFlexItem>
-          <EuiFlexItem style={{ width: '100%' }}> 
+          <EuiFlexItem> 
             <Images fileIds={serviceLog.Document.fileIds} />
           </EuiFlexItem>
-        </EuiFlexGrid>
+        </EuiFlexGroup>
       </EuiFlexItem>
       <EuiFlexItem>
         <ServiceLogDesc {...serviceLog} />

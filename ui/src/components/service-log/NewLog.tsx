@@ -125,7 +125,7 @@ export const NewLog = ({ sensorId: initialSensorId, serviceKind, onChange }: New
           name="documentIds"
           control={control}
           render={props =>
-            <DocumentLoader onChange={props.onChange} required />
+            <DocumentLoader onChange={props.onChange} />
           } // props contains: onChange, onBlur and value
         />
       </EuiFormRow>
@@ -135,7 +135,7 @@ export const NewLog = ({ sensorId: initialSensorId, serviceKind, onChange }: New
           name="photoIds"
           control={control}
           render={props =>
-            <PhotoLoader onChange={props.onChange} required />
+            <PhotoLoader onChange={props.onChange} />
           } // props contains: onChange, onBlur and value
         />
       </EuiFormRow>

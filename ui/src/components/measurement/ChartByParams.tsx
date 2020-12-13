@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/jsx-no-undef */
-import { EuiButton, EuiFlexGroup, EuiFlexItem, EuiSpacer, EuiSwitch } from '@elastic/eui'
+import { EuiButton, EuiFlexGrid, EuiFlexItem, EuiSpacer, EuiSwitch } from '@elastic/eui'
 import React, { useState } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import uiMsg from 'src/i18/ua_msg'
@@ -78,8 +78,8 @@ export const ChartByParam = (props: MeasurementsData) => {
         />
       </LineChart>
     </ResponsiveContainer>
-    <EuiFlexGroup justifyContent='center'>
-      {lines.map(line => <EuiFlexItem key={line} grow={false}>
+    <EuiFlexGrid columns={4} style={{ width: '100%' }}>
+      {lines.map(line => <EuiFlexItem key={line}>
         <EuiButton
           fill
           color="ghost"
@@ -89,6 +89,6 @@ export const ChartByParam = (props: MeasurementsData) => {
           {line}
         </EuiButton>
       </EuiFlexItem>)}
-    </EuiFlexGroup>
+    </EuiFlexGrid>
   </>
 }

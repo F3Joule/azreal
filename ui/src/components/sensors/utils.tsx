@@ -68,6 +68,7 @@ export const loadLocationDataBySensorId = async (id: number) => {
 }
 
 export const sensorSchema = yup.object().shape({
+  sideNumber: yup.number().required(),
   sensorId: yup.number().required(),
   manufacturer: yup.string(),
   model: yup.string()

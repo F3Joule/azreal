@@ -19,15 +19,9 @@ export interface AddSensor_insert_az_sensors_Sensors_one {
   sensorId: number;
 }
 
-export interface AddSensor_update_az_measurements_Measurements {
-  __typename: "az_measurements_Measurements_mutation_response";
-  affected_rows: number;
-}
-
 export interface AddSensor {
   insert_az_sensors_Locations_one: AddSensor_insert_az_sensors_Locations_one | null;
   insert_az_sensors_Sensors_one: AddSensor_insert_az_sensors_Sensors_one | null;
-  update_az_measurements_Measurements: AddSensor_update_az_measurements_Measurements | null;
 }
 
 export interface AddSensorVariables {
@@ -44,4 +38,5 @@ export interface AddSensorVariables {
   documentIds?: any | null;
   photoIds?: any | null;
   sensorFactors: az_sensors_SensorFactors_insert_input[];
+  sideNumber?: number | null;
 }

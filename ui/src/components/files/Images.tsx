@@ -8,15 +8,14 @@ type ImagesProps = {
 
 export const Images = ({ fileIds }: ImagesProps) => {
   const links = getFileLinks(fileIds)
-  const count = fileIds.length
 
   const ImageList = () => <>{links.map(link => 
     <EuiFlexItem key={link} style={{ margin: '.5rem' }}>
       <EuiImage
-        size={count > 3 ? 's' : 'm'}
+        size={'s'}
         hasShadow
         allowFullScreen
-        alt={link}
+        alt=''
         url={link}
       />
     </EuiFlexItem>

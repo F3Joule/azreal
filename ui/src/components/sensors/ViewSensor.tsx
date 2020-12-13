@@ -17,6 +17,7 @@ const SensorDesc = ({
     manufacturer,
     model,
     isActive,
+    sideNumber,
     Location: {
       address,
       airlyLink
@@ -24,6 +25,7 @@ const SensorDesc = ({
   } = sensor
 
   const items = [
+    createDescItem('Бортовий номер датчика', sideNumber),
     createDescItem('Статус', getSensorStatus(isActive)),
     createDescItem('Виробник', manufacturer),
     createDescItem('Модель', model),

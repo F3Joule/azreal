@@ -28,7 +28,7 @@ export const NewSensor = () => {
   const [ error, setError ] = useState('')
   const router = useRouter()
 
-  const { register, handleSubmit, errors, control, watch} = useForm({
+  const { register, handleSubmit, errors, control } = useForm({
     resolver: yupResolver(sensorSchema)
   })
 
@@ -39,9 +39,15 @@ export const NewSensor = () => {
       const { location, error: error1 } = await loadLocationDataBySensorId(sensorId)
       const { sensorFactors, error: error2 } = await loadSensorFactorBySensorId(sensorId)
       const error = error1 || error2
+
       if (error) {
         throw error
       } else if (location) {
+        console.log({
+          ...location,
+          sensorFactors,
+          ...sensorData
+        })
         const { data, errors } = await addSensors({ variables: {
           ...location,
           sensorFactors,
@@ -68,8 +74,19 @@ export const NewSensor = () => {
   , [ loading ])
 
   return (
-    <Page title='Редагувати датчик'>
+    <Page title='Додати датчик'>
       <EuiForm component="form" onSubmit={handleSubmit(onSubmit)}>
+
+        <EuiFormRow label='* Бортовий номер датчика' fullWidth>
+          <EuiFieldNumber
+            name='sideNumber'
+            placeholder='Бортовий номер датчика'
+            inputRef={register({ required: true })}
+            fullWidth
+            required
+          />
+        </EuiFormRow>
+
         <EuiFormRow label="* ID сенсора" fullWidth>
           <EuiFieldNumber
             name='sensorId'
@@ -96,12 +113,12 @@ export const NewSensor = () => {
             name="timestamp"
             control={control}
             render={({ onChange, value}) =>
-              <EuiDatePicker showTimeSelect selected={value ? moment(value) : undefined} onChange={onChange} fullWidth />
+              <EuiDatePicker required showTimeSelect selected={value ? moment(value) : undefined} onChange={onChange} fullWidth />
             } // props contains: onChange, onBlur and value
           />
         </EuiFormRow>
 
-        <EuiFormRow label="* Документи про встановлення" fullWidth>
+        <EuiFormRow label="Документи про встановлення" fullWidth>
           <Controller
             name="documentIds"
             control={control}
@@ -111,7 +128,7 @@ export const NewSensor = () => {
           />
         </EuiFormRow>
 
-        <EuiFormRow label="* Серія фото встановленого датчика" fullWidth>
+        <EuiFormRow label="Серія фото встановленого датчика" fullWidth>
           <Controller
             name="photoIds"
             control={control}

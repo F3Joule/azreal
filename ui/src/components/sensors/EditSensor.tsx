@@ -24,7 +24,7 @@ type EditFlayOutProps = SensorProps & {
 };
 
 export const EditSensorForm = ({
-  sensor: { model, manufacturer, sensorId, Location },
+  sensor: { model, manufacturer, sensorId, sideNumber },
 }: EditFlayOutProps) => {
   const [ updateSensors, { data: res } ] = useUpdateSensorById(sensorId)
   const [ loading, setLoading ] = useState(false)
@@ -34,16 +34,19 @@ export const EditSensorForm = ({
 
   const watchModel = watch('model')
   const watchManufacturer = watch('manufacturer')
+  const watchSideNumber = watch('sideNumber')
 
   useEffect(() => {
     setValue('sensorId', sensorId)
     setValue('model', model)
     setValue('manufacturer', manufacturer)
-    setValue('locationId', Location.locationId)
+    setValue('sideNumber', sideNumber)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const notChange = watchModel === model && watchManufacturer === manufacturer
+  const notChange = watchModel === model &&
+    watchManufacturer === manufacturer &&
+    watchSideNumber === sideNumber
 
   const resSensorId = res?.update_az_sensors_Sensors.returning[0].sensorId
 
@@ -82,11 +85,12 @@ export const EditSensorForm = ({
 
   return (
     <EuiForm component='form' onSubmit={handleSubmit(onSubmit)}>
-      <EuiFormRow label='ID сенсора' fullWidth>
+  
+      <EuiFormRow label='Бортовий номер датчика' fullWidth>
         <EuiFieldNumber
-          name='sensorId'
-          placeholder='ID сенсора з Airly'
-          disabled
+          name='sideNumber'
+          placeholder='Бортовий номер датчика'
+          inputRef={register({ required: true })}
           fullWidth
           required
         />
@@ -98,16 +102,6 @@ export const EditSensorForm = ({
 
       <EuiFormRow label='Модель' fullWidth>
         <EuiFieldText name='model' inputRef={register} fullWidth />
-      </EuiFormRow>
-
-      <EuiFormRow label='ID локації' fullWidth>
-        <EuiFieldNumber
-          name='locationId'
-          placeholder='ID локації'
-          inputRef={register({ required: true })}
-          fullWidth
-          required
-        />
       </EuiFormRow>
 
       <EuiSpacer />

@@ -22,8 +22,8 @@ export interface UpdateSensorById {
 }
 
 export interface UpdateSensorByIdVariables {
-  locationId?: number | null;
   manufacturer?: string | null;
   model?: string | null;
   id?: number | null;
+  sideNumber?: number | null;
 }

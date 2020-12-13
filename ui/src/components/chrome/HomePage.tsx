@@ -10,16 +10,17 @@ import {
 } from '@elastic/eui'
 import { useRouter } from 'next/router'
 import uiMsg from 'src/i18/ua_msg'
+import { isMobile } from 'mobile-device-detect'
 
 export const HomePage = () => {
   const router = useRouter()
 
   return <EuiPage restrictWidth style={{ marginTop: '2rem' }}>
-    <EuiFlexGroup direction="row" justifyContent='center' style={{ marginRight: '1rem' }} >
+    <EuiFlexGroup direction="row" justifyContent='center' alignItems='center' style={{ marginRight: '1rem' }} >
       <EuiFlexItem grow={false} style={{ margin: '1rem' }} >
         <EuiImage
           style={{ margin: 'auto' }}
-          size="l"
+          size={isMobile ? 'l' : 'xl'}
           hasShadow
           alt="airzoom logo"
           url="/images/airzoom.svg"
