@@ -170,11 +170,12 @@
           "role": "public",
           "permission": {
             "columns": [
-              "factorName",
-              "locationPoint",
+              "CAQI",
+              "value",
               "sensorId",
-              "timestamp",
-              "value"
+              "locationPoint",
+              "factorName",
+              "timestamp"
             ],
             "filter": {},
             "allow_aggregations": true
@@ -275,7 +276,8 @@
               "name",
               "label",
               "unit",
-              "maxValue"
+              "maxValue",
+              "ukrainianLabel"
             ],
             "filter": {},
             "allow_aggregations": true
@@ -374,9 +376,10 @@
             "columns": [
               "isActive",
               "locationId",
-              "sensorId",
               "manufacturer",
-              "model"
+              "model",
+              "sensorId",
+              "sideNumber"
             ],
             "filter": {},
             "allow_aggregations": true
@@ -397,12 +400,6 @@
           }
         },
         {
-          "name": "e_service_kind",
-          "using": {
-            "foreign_key_constraint_on": "serviceKind"
-          }
-        },
-        {
           "name": "Photo",
           "using": {
             "foreign_key_constraint_on": "photoId"
@@ -412,6 +409,12 @@
           "name": "Sensor",
           "using": {
             "foreign_key_constraint_on": "sensorId"
+          }
+        },
+        {
+          "name": "e_service_kind",
+          "using": {
+            "foreign_key_constraint_on": "serviceKind"
           }
         }
       ],
