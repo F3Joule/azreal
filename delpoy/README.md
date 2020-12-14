@@ -7,7 +7,8 @@
 Для розгортання проекту необхідно дотриматись наступних вимог щодо стороннього програмного та системного забезпечення. Тобто, наступний перелік програм та сервісів із вказаними конкретними (`==`, `>=`) або сумісними (`~=`) версіями повинен бути встановлений.
 
  - [PostgreSQL](https://www.postgresql.org/) == v12.4
- - [Python](https://www.python.org/) v3.8 with [pip](https://pypi.org/project/pip/) ~= v20.3.1
+ - [Python](https://www.python.org/) v3.8 та бібліотека `python3-dev`
+ - [PIP](https://pypi.org/project/pip/) ~= v20.3.1
  - [Node](https://nodejs.org/uk/) >= v12 LTS
  - [Yarn](https://yarnpkg.com/) >= 1.22
  - [PM2](https://pm2.io/) ~= v4.5.0
