@@ -14,7 +14,7 @@ if os.path.exists(dotenv_path):
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": os.getenv('CORS_ALLOWED_ORIGIN')}})
 
-port = os.getenv('PORT')
+port = os.getenv('MONGO_API_PORT')
 mongo_client = MongoClient(os.getenv('MONGO_HOSTNAME_URI'))
 db = mongo_client['files']
 grid_fs = GridFS(db)
@@ -42,7 +42,7 @@ def get_file(file_id):
         response.headers['Content-Type'] = file.content_type
         response.headers["Content-Disposition"] = "attachment; filename={}".format(file.filename)
         return response
-    else: 
+    else:
         return {'status': 'File is not found'}, 404
 
 @app.route("/delete/<file_id>", methods=["DELETE"])

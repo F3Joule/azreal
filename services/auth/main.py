@@ -13,9 +13,9 @@ if os.path.exists(dotenv_path):
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": os.getenv('CORS_ALLOWED_ORIGIN')}})
 
-port = os.getenv('PORT')
-hasura_secret_key = os.getenv('HASURA_SECRET_KEY')
-hasura_url = os.getenv('HASURA_URL')
+port = os.getenv('AUTH_API_PORT')
+hasura_secret_key = os.getenv('HASURA_GRAPHQL_ADMIN_SECRET')
+hasura_url = os.getenv('GRAPHQL_ENDPOINT')
 
 # GraphQl json query
 def create_login_query(email):
