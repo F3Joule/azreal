@@ -1,0 +1,28 @@
+version: "3.6"
+services:
+  hasura:
+    image: hasura/graphql-engine:v1.3.3
+    container_name: azreal-hasura
+    restart: always
+    command:
+      - graphql-engine
+      - serve
+    network_mode: "host"
+    environment:
+      - HASURA_GRAPHQL_DATABASE_URL=$HASURA_GRAPHQL_DATABASE_URL
+      - HASURA_GRAPHQL_ENABLE_CONSOLE=true
+      - HASURA_GRAPHQL_ADMIN_SECRET=$HASURA_GRAPHQL_ADMIN_SECRET
+
+  caddy:
+    image: caddy/caddy
+    container_name: caddy-server
+    depends_on:
+      - "hasura"
+    restart: always
+    network_mode: "host"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_certs:/root/.caddy
+
+volumes:
+  caddy_certs:
