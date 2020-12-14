@@ -48,6 +48,7 @@ export enum az_measurements_Measurements_constraint {
 }
 
 export enum az_measurements_Measurements_update_column {
+  CAQI = "CAQI",
   factorName = "factorName",
   locationPoint = "locationPoint",
   sensorId = "sensorId",
@@ -338,6 +339,7 @@ export interface az_measurements_Measurements_arr_rel_insert_input {
 }
 
 export interface az_measurements_Measurements_bool_exp {
+  CAQI?: float8_comparison_exp | null;
   PollutionFactor?: az_sensors_PollutionFactors_bool_exp | null;
   Sensor?: az_sensors_Sensors_bool_exp | null;
   _and?: (az_measurements_Measurements_bool_exp | null)[] | null;
@@ -351,6 +353,7 @@ export interface az_measurements_Measurements_bool_exp {
 }
 
 export interface az_measurements_Measurements_insert_input {
+  CAQI?: any | null;
   PollutionFactor?: az_sensors_PollutionFactors_obj_rel_insert_input | null;
   Sensor?: az_sensors_Sensors_obj_rel_insert_input | null;
   factorName?: string | null;

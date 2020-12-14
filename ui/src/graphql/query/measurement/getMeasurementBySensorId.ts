@@ -17,6 +17,7 @@ export const GET_MEASUREMENT_BY_SENSOR_ID = gql`
             aggregate {
               avg {
                 value
+                CAQI
               }
             }
           }

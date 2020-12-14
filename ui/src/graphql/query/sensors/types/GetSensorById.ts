@@ -47,7 +47,7 @@ export interface GetSensorById_az_sensors_Sensors {
   sensorId: number;
   model: string | null;
   manufacturer: string | null;
-  sideNumber: number;
+  sideNumber: number | null;
   Location: GetSensorById_az_sensors_Sensors_Location;
   ServiceLogs: GetSensorById_az_sensors_Sensors_ServiceLogs[];
   SensorFactors: GetSensorById_az_sensors_Sensors_SensorFactors[];

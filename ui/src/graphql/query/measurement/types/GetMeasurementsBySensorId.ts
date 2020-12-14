@@ -15,6 +15,7 @@ export interface GetMeasurementsBySensorId_az_sensors_Sensors_SensorFactors_Poll
 export interface GetMeasurementsBySensorId_az_sensors_Sensors_SensorFactors_PollutionFactor_Measurements_aggregate_aggregate_avg {
   __typename: "az_measurements_Measurements_avg_fields";
   value: number | null;
+  CAQI: number | null;
 }
 
 export interface GetMeasurementsBySensorId_az_sensors_Sensors_SensorFactors_PollutionFactor_Measurements_aggregate_aggregate {

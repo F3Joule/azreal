@@ -21,7 +21,8 @@ export type MeasurementValue = {
   unit: string,
   name: string,
   maxValue: number,
-  value: number
+  value: number,
+  CAQI: number
 }
 
 export type InnerMeasurement = CommonValues & {

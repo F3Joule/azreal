@@ -21,13 +21,14 @@ def main():
 
         values = measurements_data[sensor_id]
         timestamp = parse_str_to_timestamp(measurements_data['tillDateTime'])
+        air_quality_index = measurements_data['AQI']
 
         for (factor_name, value) in values:
             query_base = 'INSERT INTO az_measurements."Measurements" ' \
-                         '("sensorId", "locationPoint", "timestamp", "factorName", "value") '
+                         '("sensorId", "locationPoint", "timestamp", "factorName", "value", "CAQI") '
 
             query_parameters = f'VALUES ({sensor_id}, \'{location_point}\',\'{timestamp}\', ' \
-                               f'\'{factor_name}\', \'{value}\')'
+                               f'\'{factor_name}\', \'{value}\', \'{air_quality_index}\')'
 
             print(f"Imported {query_parameters}")
             query_db(query=query_base + query_parameters)
