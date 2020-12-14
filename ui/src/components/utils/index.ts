@@ -1,6 +1,6 @@
 
 export const createDescItem = (title: string, description?: string | number | React.ReactNode) => description
-  ? { 
+  ? {
     title,
     description
   }
@@ -12,8 +12,8 @@ export const getIdFromUrlQuery = (queryId: string | string[]) => {
   } catch (err) {
     console.error('Failed parse id from url')
     return 0
-  } 
-} 
+  }
+}
 
 export const fillInitValues = <T>(data: T, setValue: (key, value) => void) => {
   for (const key in data) {
@@ -51,8 +51,8 @@ function getEnv (varName: string): string | undefined {
 }
 
 export const apikey = getEnv('AIRLY_API_KEY')
-export const graphqlUrl = getEnv('GRAPHQL_URL')
-export const mongoUrl = getEnv('MONGO_URL')
-export const loginUrl = getEnv('LOGIN_URL')
-export const hasuraSecret = getEnv('SECRET')
+export const graphqlUrl = getEnv('GRAPHQL_ENDPOINT')
+export const mongoUrl = getEnv('MONGO_API_ENDPOINT')
+export const loginUrl = getEnv('AUTH_API_ENDPOINT')
+export const hasuraSecret = getEnv('HASURA_GRAPHQL_ADMIN_SECRET')
 export const aggregationLimit = getEnv('AGGREGATION_LIMIT') || 100

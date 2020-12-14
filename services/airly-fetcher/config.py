@@ -6,7 +6,7 @@ dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
 
-AIRLY_TOKEN = os.getenv('AIRLY_TOKEN')
+AIRLY_TOKEN = os.getenv('AIRLY_API_KEY')
 PG_DATABASE = os.getenv('PG_DATABASE')
 PG_USER = os.getenv('PG_USER')
 PG_PASSWORD = os.getenv('PG_PASSWORD')

@@ -5,11 +5,11 @@ const { writeFileSync } = require('fs')
 require('dotenv').config()
 
 const varsToExport = [
-  'SECRET',
+  'HASURA_GRAPHQL_ADMIN_SECRET',
   'AIRLY_API_KEY',
-  'GRAPHQL_URL',
-  'MONGO_URL',
-  'LOGIN_URL'
+  'GRAPHQL_ENDPOINT',
+  'MONGO_API_ENDPOINT',
+  'AUTH_API_ENDPOINT'
 ]
 
 function getSerializedVal (varName) {
