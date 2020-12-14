@@ -92,7 +92,7 @@ while :; do
       echo "Fetching dependencies for Python services..."
       cd "$SERVICES_DIR"
       find . -maxdepth 1 -type d \( ! -name . \) -exec \
-        bash -c "cd '{}' && pip3 install -r requirements.txt > /dev/null" \;
+        bash -c "cd '{}' && sudo pip3 install -r requirements.txt > /dev/null" \;
 
       echo "Fetching dependencies for Web UI..."
       cd "$WEBUI_DIR"
