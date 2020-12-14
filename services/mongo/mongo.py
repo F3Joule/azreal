@@ -19,6 +19,7 @@ mongo_client = MongoClient(os.getenv('MONGO_HOSTNAME_URI'))
 db = mongo_client['files']
 grid_fs = GridFS(db)
 
+
 @app.route("/add", methods=["POST"])
 def add_files():
     user_file = request.files['file']
@@ -30,9 +31,10 @@ def add_files():
         if grid_fs.find_one(file_id) is not None:
             return json.dumps({'status': 'File saved successfully', 'id': str(file_id) }), 200
         else:
-            return json.dumps({'status': 'Error occurred while saving file.'}), 500
+            return json.dumps({'status': 'Error occurred while saving file'}), 500
     else:
-        return json.dumps({'status': 'File in request is not found'}), 400
+        return json.dumps({'status': 'Requested file not found'}), 400
+
 
 @app.route("/get/<file_id>", methods=["GET"])
 def get_file(file_id):
@@ -43,12 +45,14 @@ def get_file(file_id):
         response.headers["Content-Disposition"] = "attachment; filename={}".format(file.filename)
         return response
     else:
-        return {'status': 'File is not found'}, 404
+        return {'status': 'File not found'}, 404
+
 
 @app.route("/delete/<file_id>", methods=["DELETE"])
 def delete_file(file_id):
     grid_fs.delete(ObjectId(file_id))
-    return {'status': 'File delete successfully'}, 200
+    return {'status': 'File was deleted successfully'}, 200
+
 
 if __name__ == '__main__':
-    app.run(debug=True, port=port)
+    app.run(debug=False, port=port)
