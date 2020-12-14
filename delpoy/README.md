@@ -42,15 +42,15 @@ cd azreal/postgresql
 
 - Почергово (як це вказано в розділі **PostgreSQL**) виконати команду  #2 для кожного `.sql` файлу:
 
-	1. `sudo su - postgres`
+	1. `sudo su - postgres` - це авторизує вас від імені користувача системи, що привʼязаний до PostgreSQL.
 	2. `psql -U <user> -d <database> -f <filename>.sql`
-
 		Де `<user>` - імʼя користувача, `<database>` - назва бази даних та `<filename>.sql` - назва файлу, що буде виконаний.
+  3. `exit` - це дозволить перейти до попереднього користувача в системі.
 
-- Перейти в `deploy` всередині директорії склонованого проекту:
+- Перейти в `deploy` всередині директорії склонованого проекту. На цьому етапі:
 
 ```sh
-cd azreal/deploy
+cd ../deploy
 ```
 
 - В директорії є файл змінних середовища `example.env`. Необхідно зробити копію з назвою `.env` та наповнити коректними значеннями. Наприклад:
@@ -60,7 +60,6 @@ HTTP_GATEWAY=azreal.io
 CORS_ALLOWED_ORIGIN=https://azreal.io
 
 HASURA_GRAPHQL_DATABASE_URL=postgres://hasurauser:userpassword@localhost:6543/airzoom
-
 HASURA_GRAPHQL_ADMIN_SECRET=SuperSecret-phrase
 
 AIRLY_API_KEY=2yKEEySSHPwSkZu3mURUD7yWKsD2Gqa6
