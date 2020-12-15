@@ -33,8 +33,8 @@ make_caddyfile(){
   CURRENT_GATEWAY=$(head -n 1 Caddyfile | cut -d ' ' -f 1)
 
   [[ -n $HTTP_GATEWAY ]] && sed -i "s/$CURRENT_GATEWAY {/$HTTP_GATEWAY {/" Caddyfile
-  [[ -n $AUTH_API_PORT ]] && sed -i "s/localhost:5000/localhost:$AUTH_API_PORT/" Caddyfile
-  [[ -n $MONGO_API_PORT ]] && sed -i "s/localhost:5001/localhost:$MONGO_API_PORT/" Caddyfile
+  [[ -n $AUTH_API_PORT ]] && sed -i "s/<auth-api-proxy>/localhost:$AUTH_API_PORT/" Caddyfile
+  [[ -n $MONGO_API_PORT ]] && sed -i "s/<mongo-api-proxy>/localhost:$MONGO_API_PORT/" Caddyfile
 }
 
 pm2_processes(){
