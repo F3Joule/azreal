@@ -18,6 +18,9 @@ def parse_airly_measurements(sensor_id):
     current_values = info['current']
     measurement_values = current_values['values']
 
+    if not measurement_values:
+        return
+
     datetime = current_values['tillDateTime']
     sensor_values.setdefault('tillDateTime', datetime)
 
