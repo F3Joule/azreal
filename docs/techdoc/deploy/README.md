@@ -118,11 +118,11 @@ xxxxxxxxxxxx        hasura/graphql-engine:v1.3.3   "graphql-engine serve"   * se
 - В адресному рядку, до ваших адреси чи домену додаємо `/hasura/console`. *Наприклад:* `https://azreal.io/hasura/console`.
 - У вікні, що зʼявилося, ввдимо ваш `HASURA_GRAPHQL_ADMIN_SECRET`
 
-![Hasura Console authentication](res/hasura-auth.png)
+![Hasura Console authentication](img/hasura-auth.png)
 
 - Далі, натискаємо на піктограму шестерні по правий край "шапки" сайту.
 - У тілі сторінки, що зʼявилася, знаходимо кнопку "Import metadata" та натискаємо її.
 
-![Hasura console settings](res/hasura-settings.png)
+![Hasura console settings](img/hasura-settings.png)
 
-- Обираємо файл [hasura_metadata.json](../postgresql/hasura_metadata.json), що знаходиться в директорії `postgresql` проєкту.
+- Обираємо файл [hasura_metadata.json](../../../postgresql/hasura_metadata.json), що знаходиться в директорії `postgresql` проєкту.
