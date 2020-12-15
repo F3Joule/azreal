@@ -13,14 +13,23 @@ if os.path.exists(dotenv_path):
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": os.getenv('CORS_ALLOWED_ORIGIN')}})
 
-port = os.getenv('PORT')
-hasura_secret_key = os.getenv('HASURA_SECRET_KEY')
-hasura_url = os.getenv('HASURA_URL')
+port = os.getenv('AUTH_API_PORT')
+hasura_secret_key = os.getenv('HASURA_GRAPHQL_ADMIN_SECRET')
+hasura_url = os.getenv('GRAPHQL_ENDPOINT')
+
 
 # GraphQl json query
 def create_login_query(email):
     return {
-        "query": "query Login($email: String = \"\") { az_users_Users(where: {email: {_eq: $email}}) { userId userRole AuthData { password } } }",
+        "query": """query Login($email: String = \"\") {
+          az_users_Users(where: {email: {_eq: $email}}) {
+            userId
+            userRole
+            AuthData {
+              password
+            }
+          }
+        }""",
         "operationName": "Login",
         "variables": {"email": email}
     }
@@ -32,7 +41,7 @@ def login():
     hasura_user_id = ""
     hasura_user_role = ""
 
-    #Get user_data and create hash of password for checking
+    # Get user_data and create hash of password for the check
     user_data = request.get_json()
     hash_pass = sha256(user_data['password'].encode('utf-8')).hexdigest()
 
@@ -55,8 +64,9 @@ def login():
         if hasura_user_password == hash_pass:
             return {'userId': hasura_user_id, 'userRole': hasura_user_role, 'token': hasura_secret_key}
         else:
-            return json.dumps({'status': 'Incorect password' }), 401
+            return json.dumps({'status': 'Invalid password provided'}), 401
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=port)
+    from waitress import serve
+    serve(app, port=port)
