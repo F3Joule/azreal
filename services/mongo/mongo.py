@@ -55,4 +55,5 @@ def delete_file(file_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=False, port=port)
+    from waitress import serve
+    serve(app, port=port)
