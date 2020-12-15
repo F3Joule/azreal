@@ -61,7 +61,7 @@ HTTP_GATEWAY=azreal.io
 CORS_ALLOWED_ORIGIN=https://azreal.io
 
 HASURA_GRAPHQL_DATABASE_URL=postgres://hasurauser:userpassword@localhost:6543/airzoom
-HASURA_GRAPHQL_ADMIN_SECRET=SuperSecret-phrase
+HASURA_GRAPHQL_ADMIN_SECRET=Secr3t-phr%se
 
 AIRLY_API_KEY=2yKEEySSHPwSkZu3mURUD7yWKsD2Gqa6
 
@@ -77,8 +77,11 @@ PG_PASSWORD=SuperStrongAdminPassword
 PG_HOST=localhost
 PG_PORT=6543
 
-MONGO_HOSTNAME_URI=mongodb+srv://userDataBase:8625oleh@testdatabases-cavfu.gcp.mongodb.net/test?retryWrites=true&w=majority
-mongodb://airzoomDatabase:D1fficultP%40ssw0rd@localhost:27017/?authSource=admin
+MONGO_HOSTNAME_URI=mongodb://azrealadmin:Str0ngUs3rP%ssword@localhost:27017/airzoomdb
+
+MONGO_DATABASE=airzoomdb
+MONGO_USERNAME=azrealadmin
+MONGO_PASSWORD=Str0ngUs3rP%ssword
 
 AUTH_API_PORT=5000
 MONGO_API_PORT=5001
@@ -110,6 +113,8 @@ xxxxxxxxxxxx        caddy/caddy                    "caddy run --config …"   * 
 xxxxxxxxxxxx        hasura/graphql-engine:v1.3.3   "graphql-engine serve"   * seconds ago       Up 8 seconds                     azreal-hasura
 
 ```
+
+**Примітка:** Docker контейнери налаштовані таким чином, що після перезавантаження системи вони продовжать працювати належним чином. Проте, для коректної роботи PM2 в такій ситуації після завершення попередніх інструкцій потрібно виконати команту `pm2 startup` та слідувати інструкціям команди.
 
 ## Hasura
 
