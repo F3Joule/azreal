@@ -16,7 +16,7 @@ cors = CORS(app, resources={r"/*": {"origins": os.getenv('CORS_ALLOWED_ORIGIN')}
 
 port = os.getenv('MONGO_API_PORT')
 mongo_client = MongoClient(os.getenv('MONGO_HOSTNAME_URI'))
-db = mongo_client['files']
+db = mongo_client.get_default_database()
 grid_fs = GridFS(db)
 
 
