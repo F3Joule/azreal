@@ -9,6 +9,8 @@ PROJECT_DIR="$( cd "${DIR}/.." > /dev/null 2>&1 && pwd )"
 SERVICES_DIR="${PROJECT_DIR}/services"
 WEBUI_DIR="${PROJECT_DIR}/ui"
 
+PROJECT_NAME=azreal
+
 test_apps(){
   [[ -z "$1" ]] && echo "FATAL: function requires at least 1 argument, but provided 0" && exit 2
 
@@ -49,22 +51,16 @@ pm2_processes(){
 
 while :; do
   case $1 in
-    -D)
-      docker-compose down
+    --down)
+      docker-compose -p $PROJECT_NAME down
 
       pm2_processes stop
       pm2 ls
 
       exit 0
     ;;
-    --down-clean)
-      docker-compose down -v
-      pm2 kill
-
-      exit 0
-    ;;
     --renew)
-      docker-compose up -d
+      docker-compose -p $PROJECT_NAME up -d
       docker ps
 
       pm2_processes start
@@ -85,7 +81,7 @@ while :; do
       make_caddyfile
 
       echo "Starting Caddyserver, MongoDB and Hasura GraphQL..."
-      docker-compose up -d > /dev/null
+      docker-compose -p $PROJECT_NAME up -d > /dev/null
 
       # -------------------------------------------------------------------------------------------
 
