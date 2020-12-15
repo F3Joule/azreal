@@ -1,8 +1,8 @@
-# AirZOOM real
+# AirZOOM Documentation
 
   - [Про проєкт](media/README.md)
   - [Фактори моніторингу](factors/README.md)
   - [Датчики](sensors/README.md)
-  - [Документація користувача](userdoc/README.md)
-  - [Технічна документація](techdoc/README.md)
+  - [Документація користувача AirzoomDB](userdoc/README.md)
+  - [Технічна документація AirzoomDB](techdoc/README.md)
   - [Документатор](docsify/README.md)
