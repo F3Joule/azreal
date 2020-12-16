@@ -68,6 +68,9 @@ while :; do
 
       exit 0
     ;;
+    --rebuild-ui)
+      REBUILD_UI="true"
+    ;;
     -?*)
       printf "WARN: Unknown option (ignored): %s\n" "$1" >&2
       break
@@ -116,10 +119,7 @@ while :; do
       # -------------------------------------------------------------------------------------------
 
       cd "$WEBUI_DIR"
-
-      cp "${DIR}/.env" "${WEBUI_DIR}/.env"
-
-      if [[ ! -d "${WEBUI_DIR}/.next" ]]; then
+      if [[ ! -d "${WEBUI_DIR}/.next" ]] || [[ -n $REBUILD_UI ]]; then
         echo "Building Web UI..."
         yarn build
       fi
