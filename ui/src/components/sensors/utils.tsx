@@ -44,19 +44,18 @@ export const loadLocationDataBySensorId = async (id: number) => {
     const loadUrl = getLocationDataBySensorIdUrl(id)
     const res = await axios.get(loadUrl, { headers: { apikey }})
 
-    const { 
-      locationId,
+    const {
       location: { latitude, longitude },
       elevation,
       address: { street, city, country },
     } = res.data
   
     const location = {
-      locationId,
+      locationId: id,
       locationPoint: `${latitude}, ${longitude}`,
       elevation,
       address: `${street}, ${city}, ${country}`,
-      airlyLink: `https://airly.org/map/en/#${latitude},${longitude},i${locationId}`
+      airlyLink: `https://airly.org/map/en/#${latitude},${longitude},i${id}`
     } as Location
   
     return { location }
