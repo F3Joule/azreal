@@ -47,14 +47,14 @@ export const loadLocationDataBySensorId = async (id: number) => {
     const {
       location: { latitude, longitude },
       elevation,
-      address: { street, city, country },
+      address: { displayAddress2, city, country },
     } = res.data
   
     const location = {
       locationId: id,
       locationPoint: `${latitude}, ${longitude}`,
       elevation,
-      address: `${street}, ${city}, ${country}`,
+      address: `${displayAddress2}, ${city}, ${country}`,
       airlyLink: `https://airly.org/map/en/#${latitude},${longitude},i${id}`
     } as Location
   
