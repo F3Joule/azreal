@@ -42,6 +42,15 @@ services:
       - ./mongo/create_mongo_user.sh:/docker-entrypoint-initdb.d/create_mongo_user.sh:ro
       - mongodb_data:/data/db
 
+  docsify:
+    image: littlstar/docker-docsify:alpine
+    container_name: docsify
+    restart: always
+    ports:
+      - "$DOCSIFY_PORT:3000"
+    volumes:
+      - $DOCS_DIR:/usr/local/docsify
+
 volumes:
   caddy_certs:
   mongodb_data:

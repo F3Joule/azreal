@@ -8,6 +8,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 PROJECT_DIR="$( cd "${DIR}/.." > /dev/null 2>&1 && pwd )"
 SERVICES_DIR="${PROJECT_DIR}/services"
 WEBUI_DIR="${PROJECT_DIR}/ui"
+export DOCS_DIR="${PROJECT_DIR}/docs"
 
 PROJECT_NAME=azreal
 
@@ -35,6 +36,7 @@ make_caddyfile(){
   [[ -n $HTTP_GATEWAY ]] && sed -i "s/$CURRENT_GATEWAY {/$HTTP_GATEWAY {/" Caddyfile
   [[ -n $AUTH_API_PORT ]] && sed -i "s/<auth-api-proxy>/localhost:$AUTH_API_PORT/" Caddyfile
   [[ -n $MONGO_API_PORT ]] && sed -i "s/<mongo-api-proxy>/localhost:$MONGO_API_PORT/" Caddyfile
+  [[ -n $DOCSIFY_PORT ]] && sed -i "s/<docs-api-proxy>/localhost:$DOCSIFY_PORT/" Caddyfile
 }
 
 pm2_processes(){
@@ -79,7 +81,7 @@ while :; do
       [[ ! -f .env ]] && echo "Error: .env file must be present to continue" && exit 1
       export $(grep -v '#' < .env | awk '/=/ {print $1}')
 
-      test_apps node yarn python3 pip3 docker docker-compose pm2
+      test_apps npm yarn python3 pip3 docker docker-compose pm2
 
       make_caddyfile
 
@@ -129,10 +131,10 @@ while :; do
 
       # -------------------------------------------------------------------------------------------
 
-      echo "PM2 processes status:"
+      printf "\nPM2 processes status:\n"
       pm2 ls
 
-      echo "Docker containers status:"
+      printf "\nDocker containers status:\n"
       docker ps
     ;;
   esac

@@ -14,5 +14,10 @@
     reverse_proxy <mongo-api-proxy>
   }
 
+  route /docs/* {
+    uri strip_prefix /docs
+    reverse_proxy <docs-api-proxy>
+  }
+
   reverse_proxy localhost:3000
 }
