@@ -86,7 +86,7 @@ export const uiMsg = {
       title: 'Документація',
       desc: 'Відповіді на питання і не тільки'
     },
-    path: '/docs/#'
+    path: '/docs//'
   },
   factors: {
     columns: {
