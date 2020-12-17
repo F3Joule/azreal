@@ -85,6 +85,7 @@ MONGO_PASSWORD=Str0ngUs3rP%ssword
 
 AUTH_API_PORT=5000
 MONGO_API_PORT=5001
+DOCSIFY_PORT=3001
 ```
 
 **Примітка:** для правильної роботи `AIRLY_API_KEY` повинен мати дозволену к-ть запитів з розрахунку не менше ніж 48 на 1 датчик за умови, що інтервал роботи Airly fetcher - раз у 30 хв.
